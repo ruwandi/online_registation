@@ -3,7 +3,7 @@
 // connect database
         
           $con= mysqli_connect("localhost","root","")or die("Unable to connect");
-         mysqli_select_db($con,'mini_project');      
+         mysqli_select_db($con,'mini_project');       
 ?> 
 <html>
   <head>
@@ -87,7 +87,7 @@
             background: -o-linear-gradient(45deg, #56ab2f, #a8e063);
             background: -moz-linear-gradient(45deg, #56ab2f, #a8e063);
             background: linear-gradient(45deg, #56ab2f, #a8e063);*/
-            background-color: #8585ad;
+            background-color: #0f2439;
             border-radius: 10px;
             overflow: hidden;
             padding: 72px 55px 65px 55px;
@@ -183,7 +183,7 @@
 }
      </style>
   </head>
-  <body>
+  <body style="color:white;">
     <div class="bg-contact3" style="background-image: url('01.jpg');">
      <div class="container-contact3">
       <div class="container">
@@ -205,14 +205,14 @@
                 <div class="form-group">
                   <div class="wrap-input3 validate-input">
                     <label for="name-with-initial">02.Name with initial [IN BLOCK LATTERS]:</label>
-                       <input type="text" name="name_with_initial" pattern="[A-Z].{1,200}" title="Name should only contain UPPERCASE letters. e.g. JONE" class="form-control" placeholder="Name with initial [IN BLOCK LATTERS]" required>
+                       <input type="text" name="name_with_initial" pattern="[A-Z].{1,50}"  class="form-control" placeholder="Name with initial [IN BLOCK LATTERS]" required>
                   </div>      
                 </div>
 
                 <div class="form-group">
                   <div class="wrap-input3 validate-input">
                     <label for="full-name">03.Full name of the Applicant [IN BLOCK LATTERS]:</label>
-                      <input type="text" name="full_name" class="form-control" pattern="[A-Z].{1,200}" title="Name should only contain UPPERCASE letters. e.g. JONE" class="form-control" placeholder="Name with initial [IN BLOCK LATTERS]" required>
+                      <input type="text" name="full_name" class="form-control" pattern="[A-Z].{1,50}"  class="form-control" placeholder="Full Name  [IN BLOCK LATTERS]" required>
                   </div>     
                 </div> 
 
@@ -226,7 +226,7 @@
                 <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="ID card is requireds">
                    <label for="nic-no">05.National Identity Card Number:</label>
-                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v]{1,20}" id="" placeholder="National Identity Card Number" required>
+                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,20}" id="" placeholder="National Identity Card Number" required>
                   </div>      
                 </div>
           
@@ -238,7 +238,7 @@
                 </div>
             <div class="form-group">
               <div class="wrap-input3 validate-input" data-validate="Contact No is requireds">
-                    <label for="contact">07.Contact Telephone No:</label><br>
+                    <label for="contact">07.Contact Telephone No/s:</label><br>
                      <input type="text" name="mobile" class="form-control" pattern="[0-9].{1,20}" title="Please enter valid No"  id="usr" placeholder="Contact Telephone No mobile" required>
                   
                   </div>   
@@ -256,7 +256,7 @@
                       <table>
                         <tr>
                           <th>Index No:<input type="text" name="index_no" class="form-control" pattern="[1-9].{1,12}" title="Please enter valid index" id="usr" required></th>
-                          <th>Z-Score :<input type="text" name="zscore" class="form-control" pattern="[1-9].{1,5}" title="Please enter valid Z-score" id="usr" required></th>
+                          <th>Z-Score :<input type="text" name="zscore" class="form-control" pattern="[0-9].{1,5}" title="Please enter valid Z-score" id="usr" required></th>
                           <th>Genaral Test Marks:<input name="genaral_test_marks" type="text" class="form-control" pattern="[1-9].{1,2}" title="Please enter marks"  id="usr" required></th>      
                         </tr>
                       </table>
@@ -268,7 +268,7 @@
                         </tr>
                         <tr>
                           <td>1</td>
-                          <td><input type="text" name="sub1" class="form-control" pattern="[a-z].{1,12}" title="Please enter subject name" id="usr" required></td>
+                          <td><input type="text" name="sub1" class="form-control" pattern="[a-z ].{1,20}" title="Please enter subject name" id="usr" required></td>
                           <td>
                             <select name="grade1" id="course" required>
                               <option value=""></option>
@@ -376,27 +376,27 @@
        <label for="course-apply">11.Document to be attached:</label>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename1" accept="application/pdf,application/jpg,application/png" required>
+          <input type="file" class="custom-file-input" id="customFile" name="filename1" accept="image/*" required />
           <label class="custom-file-label" for="customFile">Payment voucher</label>
        </div> 
 
          <div class="custom-file mb-3"> 
-          <input type="file" class="custom-file-input" id="customFile" name="filename2" accept="application/pdf,application/jpg,application/png" required>
+          <input type="file" class="custom-file-input" id="customFile" name="filename2" accept="image/*" required />
           <label class="custom-file-label" for="customFile">Bank paying receipt</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename3" accept="application/pdf,application/jpg,application/png" required>
+          <input type="file" class="custom-file-input" id="customFile" name="filename3" accept="image/*" required />
           <label class="custom-file-label" for="customFile">Certificate copy of G.C.E(A/L) 2014 Certificate</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename4" accept="application/pdf,application/jpg,application/png" required>
+          <input type="file" class="custom-file-input" id="customFile" name="filename4" accept="image/*" required />
           <label class="custom-file-label" for="customFile">Certificate copy of G.C.E(O/L) 2010 Certificate</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="application/pdf,application/jpg,application/png" >
+          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="image/*" />
           <label class="custom-file-label" for="customFile">If any affidavit </label>
        </div> 
 
