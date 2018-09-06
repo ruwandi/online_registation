@@ -1,7 +1,7 @@
 <?php
    
 // connect database
-        
+        session_start();
           $con= mysqli_connect("localhost","root","")or die("Unable to connect");
          mysqli_select_db($con,'mini_project');       
 ?> 
@@ -244,12 +244,11 @@
                   </div>   
             </div>
                     
-            <div class="form-group">
+       <div class="form-group">     
                 <label for="gender">08.Gender:</label><br>
-                <input type="radio" name="gender" value="male">Male <br>
-                <input type="radio" name="gender" value="female">Female
-               
-            </div>
+                <label class="radio-inline"><input type="radio" name="gender" >   Male</label>
+                <label class="radio-inline"><input type="radio" name="gender">    Female</label>
+      </div>
                     
       <div class="form-group">
                       <label for="result">09.Result of the G.C.E.(A/L) Examination 2010:</label><br>
@@ -408,6 +407,8 @@
       <?php 
 
         if(isset($_POST['submit'])){
+           
+
           $course=$_POST['course'];
           $name_with_initial=$_POST['name_with_initial'];
           $full_name=$_POST['full_name'];
@@ -431,6 +432,16 @@
           $OL_english_grade=$_POST['OL_english_grade'];
           $OL_englishexamination_year=$_POST['OL_englishexamination_year'];
           $OL_english_index_no=$_POST['OL_english_index_no'];
+
+           $from = "ruwandi1102@gmail.com"; // this is your Email address
+            $to = $_SESSION['email']; // this is the sender's Email address
+            $subject = "University Admission";
+            $subject2 = "Copy of your form submission";
+            $message = $name_with_initial. " " ." wrote the following:" . "\n\n" ;
+            $message2 = "Here is a copy of your message " .$name_with_initial . "\n\n";
+
+            $headers = "From:" . $from;
+            $headers2 = "From:" . $to;
           //file upload
            $name1=$_FILES['filename1']['name'];
            $tmp_name1=$_FILES['filename1']['tmp_name'];
@@ -466,7 +477,13 @@
                          
                         if ($query_run) {
                           echo '<script type ="text/javascript"> alert("success") </script>';
-                          header('location:login.php');
+                          /*header('location:login.php');*/
+                         
+                          mail($to,$subject,$message,$headers);
+                          mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+                          echo "Mail Sent. Thank you " .$name_with_initial. ", we will contact you shortly.";
+                          // You can also use header('Location: thank_you.php'); to redirect to another page.
+                          
                         }
                         else{
                            echo '<script type ="text/javascript"> alert("Error!") </script>';
