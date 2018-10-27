@@ -1,9 +1,154 @@
-<?php
-   
-// connect database
+<?php 
         session_start();
           $con= mysqli_connect("localhost","root","")or die("Unable to connect");
-         mysqli_select_db($con,'mini_project');       
+         mysqli_select_db($con,'online_registration_system'); 
+
+
+        if(isset($_POST['preview'])){
+          
+          $course=$_POST['course'];
+          $_SESSION['course']=$course; 
+       
+          $name_with_initial=$_POST['name_with_initial'];
+          $_SESSION['name_with_initial']=$name_with_initial; 
+
+          $full_name=$_POST['full_name'];
+          $_SESSION['full_name']=$full_name;
+
+          $adress=$_POST['adress'];
+          $_SESSION['adress']=$adress;
+
+          $nic_no=$_POST['nic_no'];
+          $_SESSION['nic_no']=$nic_no;
+
+
+          $distric=$_POST['distric'];
+          $_SESSION['distric']=$distric;
+
+          $mobile=$_POST['mobile'];
+          $_SESSION['mobile']=$mobile;
+
+          $gender=$_POST['gender'];
+          $_SESSION['gender']=$gender;
+
+          $index_no=$_POST['index_no'];
+          $_SESSION['index_no']=$index_no;
+
+          $zscore=$_POST['zscore'];
+          $_SESSION['zscore']=$zscore;
+
+          $genaral_test_marks=$_POST['genaral_test_marks'];
+          $_SESSION['genaral_test_marks']=$genaral_test_marks;
+
+          $sub1=$_POST['sub1'];
+          $_SESSION['sub1']=$sub1;
+
+          $grade1=$_POST['grade1'];
+          $_SESSION['grade1']=$grade1;
+
+          $sub2=$_POST['sub2'];
+          $_SESSION['sub2']=$sub2;
+
+          $grade2=$_POST['grade2'];
+          $_SESSION['grade2']=$grade2;
+
+          $sub3=$_POST['sub3'];
+          $_SESSION['sub3']=$sub3;
+
+          $grade3=$_POST['grade3'];
+          $_SESSION['grade3']=$grade3;
+
+          $OL_maths_grade=$_POST['OL_maths_grade'];
+          $_SESSION['OL_maths_grade']=$OL_maths_grade;
+
+          $OL_maths_examination_year=$_POST['OL_maths_examination_year'];
+          $_SESSION['OL_maths_examination_year']=$OL_maths_examination_year;
+
+          $OL_maths_index_no=$_POST['OL_maths_index_no'];
+          $_SESSION['OL_maths_index_no']=$OL_maths_index_no;
+
+          $OL_english_grade=$_POST['OL_english_grade'];
+          $_SESSION['OL_english_grade']=$OL_english_grade;
+
+          $OL_englishexamination_year=$_POST['OL_englishexamination_year'];
+          $_SESSION['OL_englishexamination_year']=$OL_englishexamination_year;
+
+          $OL_english_index_no=$_POST['OL_english_index_no'];
+          $_SESSION['OL_english_index_no']=$OL_english_index_no;
+
+          $textarea=$_POST['textarea'];
+          $_SESSION['textarea']=$textarea;
+          
+           $name1=$_FILES['filename1']['name'];
+           $_SESSION['filename1']=$name1;
+           $tmp_name1=$_FILES['filename1']['tmp_name'];
+           $_SESSION['tmp_name1']=$tmp_name1;
+           $location1="uploads/";
+           $_SESSION['location1']=$location1;
+
+           $name2=$_FILES['filename2']['name'];
+           $_SESSION['filename2']=$name2;
+           $tmp_name2=$_FILES['filename2']['tmp_name'];
+           $_SESSION['tmp_name2']=$tmp_name2;
+           $location2="uploads/";
+           $_SESSION['location2']=$location2;
+
+           $name3=$_FILES['filename3']['name'];
+           $_SESSION['filename3']=$name3;
+           $tmp_name3=$_FILES['filename3']['tmp_name'];
+           $_SESSION['tmp_name3']=$tmp_name3;
+           $location3="uploads/";
+           $_SESSION['location3']=$location3;
+
+           $name4=$_FILES['filename4']['name'];
+           $_SESSION['filename4']=$name4;
+           $tmp_name4=$_FILES['filename4']['tmp_name'];
+           $_SESSION['tmp_name4']=$tmp_name4;
+           $location4="uploads/";
+           $_SESSION['location4']=$location4;
+
+           $name5=$_FILES['filename5']['name'];
+           $_SESSION['filename5']=$name5;
+           $tmp_name5=$_FILES['filename5']['tmp_name'];
+           $_SESSION['tmp_name5']=$tmp_name5;
+           $location5="uploads/"; 
+           $_SESSION['location5']=$location5;
+//multiple file upload
+
+           $name6=$_FILES['filename6']['name'];
+           $_SESSION['filename6']=$name6;
+           $tmp_name6=$_FILES['filename6']['tmp_name'];
+           $_SESSION['tmp_name6']=$tmp_name6;
+           $location6="uploads/";
+           $_SESSION['location6']=$location6;
+
+
+            $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
+            $upload_file2=move_uploaded_file($tmp_name2, $location2.$name2);
+            $upload_file3=move_uploaded_file($tmp_name3, $location3.$name3);
+            $upload_file4=move_uploaded_file($tmp_name4, $location4.$name4);
+            $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
+            $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
+            
+
+
+          
+              $query="insert into students values('$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+              $query_run = mysqli_query($con,$query);
+              if ($query_run) { 
+                echo '<script type ="text/javascript"> alert("Success!") </script>';
+                 header('location:review.php');
+                }
+                else{
+                           echo '<script type ="text/javascript"> alert("Error!") </script>';
+                        }
+
+          
+                  
+          } 
+
+          
+                
 ?> 
 <html>
   <head>
@@ -38,6 +183,9 @@
                   text-decoration: none;
                   display: inline-block;
                   padding: 8px 16px;
+
+              }
+              select{
 
               }
 
@@ -82,6 +230,7 @@
             }
               .container{
              width: 800px;
+             margin-left: 50px;
             /* background: #80c64a;
             background: -webkit-linear-gradient(45deg, #56ab2f, #a8e063);
             background: -o-linear-gradient(45deg, #56ab2f, #a8e063);
@@ -191,13 +340,13 @@
             <h2>Application Form</h2>
             </center>
 
-          <form action="" method="POST" enctype="multipart/form-data">
+          <form  method="POST" enctype="multipart/form-data"  >
                 <div class="form-group">
                   <label for="course-apply">01.Course/s Apply:</label><br>
                     <select name="course" id="course" required>
                               <option value=""></option>
-                              <option value="B.Sc(Special) Degree in Sport Sciences & Management">B.Sc(Special) Degree in Sport Sciences & Management (SSM)</option>
-                              <option value="B.Sc(Special) Degree in Phyaical Education (PED)">B.Sc(Special) Degree in Phyaical Education (PED)</option>
+                              <option value="B.Sc(Special) Degree in Sport Sciences & Management">B.Sc (Special) Degree in Sport Sciences & Management (SSM)</option>
+                              <option value="B.Sc(Special) Degree in Phyaical Education (PED)">B.Sc (Special) Degree in Phyaical Education (PED)</option>
                               <option value="Both SSM & PED">Both SSM & PED</option>
                     </select>
                    
@@ -226,7 +375,7 @@
                 <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="ID card is requireds">
                    <label for="nic-no">05.National Identity Card Number:</label>
-                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,20}" id="" placeholder="National Identity Card Number" required>
+                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,20}" id="usr" placeholder="National Identity Card Number" required>
                   </div>      
                 </div>
           
@@ -246,17 +395,17 @@
                     
        <div class="form-group">     
                 <label for="gender">08.Gender:</label><br>
-                <label class="radio-inline"><input type="radio" name="gender" >   Male</label>
-                <label class="radio-inline"><input type="radio" name="gender">    Female</label>
+                <label class="radio-inline"><input type="radio" name="gender" >Male</label>
+                <label class="radio-inline"><input type="radio" name="gender">Female</label>
       </div>
                     
       <div class="form-group">
-                      <label for="result">09.Result of the G.C.E.(A/L) Examination 2010:</label><br>
+                      <label for="result">09.Result of the G.C.E.(A/L) Examination:</label><br>
                       <table>
                         <tr>
                           <th>Index No:<input type="text" name="index_no" class="form-control" pattern="[1-9].{1,12}" title="Please enter valid index" id="usr" required></th>
                           <th>Z-Score :<input type="text" name="zscore" class="form-control" pattern="[0-9].{1,5}" title="Please enter valid Z-score" id="usr" required></th>
-                          <th>Genaral Test Marks:<input name="genaral_test_marks" type="text" class="form-control" pattern="[1-9].{1,2}" title="Please enter marks"  id="usr" required></th>      
+                          <th>Genaral Test Marks:<input name="genaral_test_marks" type="text" class="form-control" pattern="[1-9].{1,1}" title="Please enter marks"  id="usr" required></th>      
                         </tr>
                       </table>
                       <table>
@@ -277,7 +426,8 @@
                               <option value="S">S</option>
                             </select>
                             </td>
-                        </tr><tr>
+                        </tr>
+                        <tr>
                           <td>2</td>
                           <td><input type="text" name="sub2" pattern="[a-z].{1,12}" title="Please enter subject name" class="form-control" id="usr" required></td>
                           <td>
@@ -289,7 +439,8 @@
                               <option value="S">S</option>
                             </select>
                             </td>
-                        </tr><tr>
+                        </tr>
+                        <tr>
                           <td>3</td>
                           <td><input type="text" name="sub3" class="form-control" pattern="[a-z].{1,12}" title="Please enter subject name" id="usr" required></td>
                           <td>
@@ -307,7 +458,7 @@
             
 
                    <div class="form-group">
-                      <label for="result">10.Result of the G.C.E.(O/L) Examination 2014:</label><br>
+                      <label for="result">10.Result of the G.C.E. (O/L) Examination:</label><br>
                       <table>
                         <tr>
                           <th>No</th>
@@ -375,143 +526,51 @@
        <label for="course-apply">11.Document to be attached:</label>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename1" accept="image/*" required />
+          <input type="file" class="custom-file-input" id="customFile" name="filename1" accept="application/pdf,image/*" required />
           <label class="custom-file-label" for="customFile">Payment voucher</label>
        </div> 
 
          <div class="custom-file mb-3"> 
-          <input type="file" class="custom-file-input" id="customFile" name="filename2" accept="image/*" required />
+          <input type="file" class="custom-file-input" id="customFile" name="filename2" accept="application/pdf,image/*" required />
           <label class="custom-file-label" for="customFile">Bank paying receipt</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename3" accept="image/*" required />
-          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E(A/L) 2014 Certificate</label>
+          <input type="file" class="custom-file-input" id="customFile" name="filename3" accept="application/pdf,image/*" required />
+          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E (A/L) Certificate</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename4" accept="image/*" required />
-          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E(O/L) 2010 Certificate</label>
+          <input type="file" class="custom-file-input" id="customFile" name="filename4" accept="application/pdf,image/*" required />
+          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E (O/L)  Certificate</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="image/*" />
+          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="application/pdf,image/*" />
           <label class="custom-file-label" for="customFile">If any affidavit </label>
-       </div> 
+       </div>
+
+       <div class="custom-file mb-3">
+          <input type="file" class="custom-file-input" id="upload" name="filename6" accept="application/pdf,image/*" multiple="multiple"/>
+          
+          <label class="custom-file-label" for="customFile">If any certificate </label>
+       </div>   
+        
+
+       <div class="form-group">
+          <label for="comment"> Any Comment:</label>
+          <textarea class="form-control" rows="5" id="comment" name="textarea" title="Please put a comment that you want to tell us"></textarea>
+        </div>
 
         <div class="container-contact3-form-btn">
-              <button class="contact3-form-btn" name="submit">Submit</button>
+              <button  name="preview" class="btn btn-primary">Retrieve</button>
+              
         </div>
 
     </form>
-      <?php 
 
-        if(isset($_POST['submit'])){
-           
-
-          $course=$_POST['course'];
-          $name_with_initial=$_POST['name_with_initial'];
-          $full_name=$_POST['full_name'];
-          $adress=$_POST['adress'];
-          $nic_no=$_POST['nic_no'];
-          $distric=$_POST['distric'];
-          $mobile=$_POST['mobile'];
-          $gender=$_POST['gender'];
-          $index_no=$_POST['index_no'];
-          $zscore=$_POST['zscore'];
-          $genaral_test_marks=$_POST['genaral_test_marks'];
-          $sub1=$_POST['sub1'];
-          $grade1=$_POST['grade1'];
-          $sub2=$_POST['sub2'];
-          $grade2=$_POST['grade2'];
-          $sub3=$_POST['sub3'];
-          $grade3=$_POST['grade3'];
-          $OL_maths_grade=$_POST['OL_maths_grade'];
-          $OL_maths_examination_year=$_POST['OL_maths_examination_year'];
-          $OL_maths_index_no=$_POST['OL_maths_index_no'];
-          $OL_english_grade=$_POST['OL_english_grade'];
-          $OL_englishexamination_year=$_POST['OL_englishexamination_year'];
-          $OL_english_index_no=$_POST['OL_english_index_no'];
-
-           $from = "ruwandi1102@gmail.com"; // this is your Email address
-            $to = $_SESSION['email']; // this is the sender's Email address
-            $subject = "University Admission";
-            $subject2 = "Copy of your form submission";
-            $message = $name_with_initial. " " ." wrote the following:" . "\n\n" ;
-            $message2 = "Here is a copy of your message " .$name_with_initial . "\n\n";
-
-            $headers = "From:" . $from;
-            $headers2 = "From:" . $to;
-          //file upload
-           $name1=$_FILES['filename1']['name'];
-           $tmp_name1=$_FILES['filename1']['tmp_name'];
-           $location1="uploads/";
-
-           $name2=$_FILES['filename2']['name'];
-           $tmp_name2=$_FILES['filename2']['tmp_name'];
-           $location2="uploads/";
-
-           $name3=$_FILES['filename3']['name'];
-           $tmp_name3=$_FILES['filename3']['tmp_name'];
-           $location3="uploads/";
-
-           $name4=$_FILES['filename4']['name'];
-           $tmp_name4=$_FILES['filename4']['tmp_name'];
-           $location4="uploads/";
-
-           $name5=$_FILES['filename5']['name'];
-           $tmp_name5=$_FILES['filename5']['tmp_name'];
-           $location5="uploads/";
-         /*
-              $query="insert into student values('','$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no')";
-              $query_run = mysqli_query($con,$query);*/
-            $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
-            $upload_file2=move_uploaded_file($tmp_name2, $location2.$name2);
-            $upload_file3=move_uploaded_file($tmp_name3, $location3.$name3);
-            $upload_file4=move_uploaded_file($tmp_name4, $location4.$name4);
-            $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
-              
-              if($upload_file1 && $upload_file2 && $upload_file3 && $upload_file4 && $upload_file5){
-                        $query="insert into student values('','$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$name1','$location1','$name2','$location2','$name3','$location3','$name4','$location4','$name5','$location5')";
-                        $query_run = mysqli_query($con,$query);
-                         
-                        if ($query_run) {
-                          echo '<script type ="text/javascript"> alert("success") </script>';
-                          /*header('location:login.php');*/
-                         
-                          mail($to,$subject,$message,$headers);
-                          mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
-                          echo "Mail Sent. Thank you " .$name_with_initial. ", we will contact you shortly.";
-                          // You can also use header('Location: thank_you.php'); to redirect to another page.
-                          
-                        }
-                        else{
-                           echo '<script type ="text/javascript"> alert("Error!") </script>';
-                        }
-                          
-              }            
-          } 
-          
-       ?> 
-      <script>
-      /*repeat background*/
-        function checkforblank(){
-              if (document.getElementsByID('course').value== "") {
-                  alert('Please enter first name');
-                  document.getElementById('course').style.borderColor = "red"; 
-                  return false; 
-                         }
-                  return true;
-             } 
-        $(document).ready(function() {
-        $('#contact_form').bootstrapValidator( {
-            // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
-            feedbackIcons: {
-                valid: 'glyphicon glyphicon-ok',
-                invalid: 'glyphicon glyphicon-remove',
-                validating: 'glyphicon glyphicon-refresh'
-            },
-      </script>
+      
+      
     </div>
   </div>
  </div>
