@@ -132,8 +132,9 @@
             
 
 
-          
-              $query="insert into students values('$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+              
+              $query="insert into students(course,name_with_initial,full_name,adress,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values('$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+              
               $query_run = mysqli_query($con,$query);
               if ($query_run) { 
                 echo '<script type ="text/javascript"> alert("Success!") </script>';
