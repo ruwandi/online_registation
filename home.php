@@ -31,6 +31,7 @@
 		        if (isset($_POST['register'])) { 
 		          $username = $_POST['username'];
 		          $email = $_POST['email'];
+		          $_SESSION['email']=$email;
 		          $password= $_POST['password'];
 		          $cpassword = $_POST['confirmpassword'];
 		          if($password==$cpassword){
