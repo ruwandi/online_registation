@@ -1,6 +1,8 @@
 <?php  
+  session_start(); 
   $con= mysqli_connect("localhost","root","")or die("Unable to connect");
-         mysqli_select_db($con,'mini_project'); 
+         mysqli_select_db($con,'online_registration_system'); 
+
 ?>
 <html lang="en">
   <head>
@@ -21,8 +23,9 @@
               background: #0f2439;
             }
             
-            center{
-              padding-top: 50px;
+            .head{
+              padding-top: 20px;
+              background-color:#0066ff;
             }
             table {
                 font-family: arial, sans-serif;
@@ -42,51 +45,131 @@
                 background-color: #000033;
             }
             img{
-              width:900px;
+              width:450px;
+            }
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+               
+            }
+            .row{
+                
+            }
+            .container{
+                margin-bottom: 50px;
+            }
+            h1{
+              padding-bottom: 15px;
+            }
+            .btn-group{
+              margin-bottom: 40px;
             }
         </style>
   </head> 
   <body style="color:white;">
-    <div class="container">
-           <center style="color:white;">
+          <center class="head">
             <h1>Student Management</h1>
-        </center>
+          </center>
 
+    <div class="container">
+
+           
                    <?php 
-                                  
-                        $query="select * from student";
-                        $qurey_run= mysqli_query($con,$query);
-                        $option = '';
-                        while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
-                        $option .= '<option value = "'.$row['name_with_initial'].'">'.$row['name_with_initial'].'</option>';
+                         
+                        $query1= "select * from students WHERE course='B.Sc(Special) Degree in Sport Sciences & Management'";
+                        $qurey_run1= mysqli_query($con,$query1);
+                        $option1 = '';
+                        while($row = mysqli_fetch_array($qurey_run1,MYSQLI_ASSOC)){
+                            $option1 .= '<option value ='.$row['id'].'>'.$row['id'].'</option>';
+                           /*$option1 .= '<option value = "'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'">'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'</option>';*/
+                                    }
+
+                        $query2="select * from students WHERE course='B.Sc(Special) Degree in Phyaical Education (PED)'";
+                        $qurey_run2= mysqli_query($con,$query2);
+                        $option2 = '';
+                        while($row = mysqli_fetch_array($qurey_run2,MYSQLI_ASSOC)){
+                            $option2 .= '<option value ='.$row['id'].'>'.$row['id'].'</option>';
+                            /*$option2 .= '<option value = "'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'">'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'</option>';*/
+                                    }
+
+                        $query3="select * from students WHERE course='Both SSM & PED'";
+                        $qurey_run3= mysqli_query($con,$query3);
+                        $option3 = '';
+                        while($row = mysqli_fetch_array($qurey_run3,MYSQLI_ASSOC)){
+                            $option3 .= '<option value ='.$row['id'].'>'.$row['id'].'</option>';
+                            /* $option3 .= '<option value = "'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'">'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'</option>';*/
                                     }
                                      
                     ?>
 
-        <form action="" method="post">
-          <div class="form-group">
-            <label><h3>Select Registered Name:</h3></label>
-              <select name="name-with-initial">
-                         <?php echo $option; ?>
-              </select> 
-          </div>
+                    <?php 
+            if(isset($_POST['submit'])){
+             $course=$_POST['course'];
+             $query="select * from students WHERE course='$course'";
+             $qurey_run=mysqli_query($con,$query) or die('error getting');
+             $option1 = '';
+                 while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
+                    $option1 .= '<option value ='.$row['id'].'>'.$row['id'].'</option>';
+                }
+            }
+        ?>
+        <div class="row">
+          <div class="column" >
+               <form action="" method="post">
+                <div class="form-group">
+                  <!-- <label><h3>Select Registered Course:</h3></label> -->
+                   <select name="course" id="course" required>
+                                    <option value="B.Sc(Special) Degree in Sport Sciences & Management">B.Sc(Special) Degree in Sport Sciences & Management</option>
+                                    <option value="B.Sc(Special) Degree in Phyaical Education (PED)">B.Sc(Special) Degree in Phyaical Education (PED)</option>
+                                    <option value="Both SSM & PED">Both SSM & PED</option>
+                   </select>  
+                </div>
 
-          <input type="submit" name="submit" value="Submit" class="btn btn-primary btn-block">
-        </form>
+              <input type="submit" name="submit" value="Select Course/s Apply" class="btn btn-primary btn-block">
+            </form>
+          </div>
+          <div class="column">
+            <form action="" method="post">
+                <div class="form-group">
+                  <!-- <br><label><h3>Select Student That registered for The Examination:</h3></label> -->
+                   <select name="id"> <?php echo $option1; ?> </select>    
+                </div>
+
+                <input type="submit" name="sbt" value="Select student" class="btn btn-primary btn-block">
+              </form>
+
+            
+          </div>
+        </div>
+       
+
+        
 
         <?php 
-          echo"<table>";
-            if(isset($_POST['submit'])){
-             $name_with_initial=$_POST['name-with-initial'];
-             
-             $query="select * from student WHERE name_with_initial='$name_with_initial'";
-              $qurey_run=mysqli_query($con,$query) or die('error getting');
-
-                while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
+            echo"<table>";
+            if(isset($_POST['sbt'])){
+             $id=$_POST['id'];
+             $_SESSION['id'] = $id;
+             $_SESSION['favcolor'] = 'green';
+             $query="select * from students WHERE id='$id'";
+             $qurey_run=mysqli_query($con,$query) or die('error getting');
+             $option1 = '';
+                 while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
+                  
                         echo "<tr><th>ID</th><th>";
-                        echo "20/AS/SS/".$row['id'];
+                   if ($course='B.Sc(Special) Degree in Sport Sciences & Management') {
+                         echo "20/AS/SM/".$row['id'];
+                  }
+                  else if ($course='B.Sc(Special) Degree in Phyaical Education (PED)') {
+                        echo "20/AS/PE/".$row['id'];
+                  }
+                   else{
+                    echo "20/AS/SMPE/".$row['id'];
+                   }
+                       
                         echo "</th><tr><td>Course Apply</td><td>";
-                        echo $row['course_apply'];
+                        echo $row['course'];
                         echo "</td></tr><tr><td>Name with initial</td><td>";
                         echo $row['name_with_initial'];
                         echo "</td></tr><tr><td>Full name</td><td>";
@@ -105,7 +188,7 @@
                         echo "</table>";
                         echo "<br><br>";
 
-                        echo "<h2>Result of the G.C.E.(A/L) Examination 2010:<h2>";
+                        echo "<h2>Result of the G.C.E.(A/L) Examination:<h2>";
                         echo "<table>";
                         echo "<tr><th>Index No(A/L)</th><th>";
                         echo $row['index_no'];
@@ -133,7 +216,7 @@
                         echo "</td></tr>";
                         echo "</table>";
 
-                         echo "<br><h2>Result of the G.C.E.(O/L) Examination 2014:<h2>";
+                         echo "<br><h2>Result of the G.C.E.(O/L) Examination:<h2>";
                         echo "<table>";
                         echo "<tr><th>No</th><th>Subject</th><th>Grade</th><th>Examination Year</th><th>Index No</th></tr><tr><td>1</td><td>Mathematics</td><td>";
                         echo $row['OL_maths_grade'];
@@ -144,30 +227,164 @@
                         echo "</td></tr><tr><td>2</td><td>English Language</td><td>";
                         echo $row['OL_english_grade'];
                         echo "</td><td>";
-                        echo $row['OL_englishexamination_year'];
+                        echo $row['OL_english_examination_year'];
                         echo "</td><td>";
                         echo $row['OL_english_index_no'];
                         echo "</td></tr>";
                         echo "</table>";
 
                         echo "<br>attached Document:";
-                        echo "<table>";
-                        echo "<tr><th>Payment voucher</th><th>";
-                        echo "<img src='uploads/".$row['filename1']."'>";
-                        echo "</th></tr><tr><td>Bank paying receipt</td><td>";
-                        echo "<img src='uploads/".$row['filename2']."'>";
-                        echo "</td></tr><tr><td>Certificate copy of G.C.E(A/L) 2014 Certificate</td><td>";
-                        echo "<img src='uploads/".$row['filename3']."'>";
-                        echo "</td></tr><tr><td>Certificate copy of G.C.E(O/L) 2010 Certificate</td><td>";
-                        echo "<img src='uploads/".$row['filename4']."'>";
-                        echo "</td></tr><tr><td>If any affidavit </td><td>";
-                        echo "<img src='uploads/".$row['filename5']."'>";
-                        echo "</table>";
-                        }
-            
-
-           }
+                       
+                        
          ?>
-    </div> 
+         <table>
+          <tr>
+            <th>Attched document</th><th>Document</th><th>Condition</th><th>Comment</th>
+          </tr>
+          <tr>
+            <td>Payment voucher</td>
+            <td > 
+                  <button onclick="myFunction()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction() {
+                      window.open("file1.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="ok" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>Bank paying receipt</td>
+            <td> <button onclick="myFunction1()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction1() {
+                      window.open("file2.php");
+                  }
+                  </script></td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="ok" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok ">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>Certificate copy of G.C.E(A/L) Certificate</td>
+            <td> <button onclick="myFunction2()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction2() {
+                      window.open("file3.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>Certificate copy of G.C.E(O/L)Certificate</td>
+            <td> <button onclick="myFunction4()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction4() {
+                      window.open("file4.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>If any affidavit</td>
+            <td> <button onclick="myFunction5()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction5() {
+                      window.open("file5.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>If any certificate</td>
+            <td><button onclick="myFunction6()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction6() {
+                      window.open("file6.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+         </table>
+
+          <br><br>
+          
+            <form method="post">
+              <div class="container-contact3-form-btn">
+              <button  name="select" class="btn btn-primary">Select</button>
+              <button  name="reject" class="btn btn-primary">Reject</button>
+              <button  name="shedule" class="btn btn-primary">Shedule</button>
+              
+        </div>
+            </form>
+          
+        <br><br>
+          <?php }}
+          $id=$_POST['id'];
+          $name_with_initial=$_SESSION['name_with_initial'] ;
+          $full_name=$_SESSION['full_name'];
+          $distric=$_SESSION['distric'];
+          $mobile=$_SESSION['mobile'];
+          $email=$_SESSION['email'];
+          if (isset($_POST['select'])) {
+            $query="select * from students WHERE id='$id'";
+            $query_run = mysqli_query($con,$query);
+              if ($query_run) { 
+                if($course='B.Sc(Special) Degree in Sport Sciences & Management'){
+                $quety1="insert into ssm (name_with_initial,full_name,district,mobile,email) values ('$name_with_initial','$full_name','$distric','$mobile','$email')";
+              }
+                /*echo '<script type ="text/javascript"> alert("Success!") </script>';
+                 header('location:review.php');*/
+                }
+                else{
+                           echo '<script type ="text/javascript"> alert("Error!") </script>';
+                        }
+          }
+          
+           ?>
+          
   </body>
 </html>
