@@ -141,82 +141,20 @@ session_start();
                         echo "</td></tr>";
                         echo "</table>";
                         }
-
-            if(isset($_POST['submit'])){
-
-              $course=$_SESSION['course'];  
-          $name_with_initial=$_SESSION['name_with_initial'] ;
-          $full_name=$_SESSION['full_name'];
-          $adress=$_SESSION['adress'];
-          $nic_no=$_SESSION['nic_no'];
-          $distric=$_SESSION['distric'];
-          $mobile=$_SESSION['mobile'];
-          $gender=$_SESSION['gender'];
-          $index_no=$_SESSION['index_no'];
-          $zscore=$_SESSION['zscore'];
-          $genaral_test_marks=$_SESSION['genaral_test_marks'];
-          $sub1=$_SESSION['sub1'];
-          $grade1=$_SESSION['grade1'];
-          $sub2=$_SESSION['sub2'];
-          $grade2=$_SESSION['grade2'];
-          $sub3=$_SESSION['sub3'];
-          $grade3=$_SESSION['grade3'];
-          $OL_maths_grade=$_SESSION['OL_maths_grade'];
-          $OL_maths_examination_year=$_SESSION['OL_maths_examination_year'];
-          $OL_maths_index_no=$_SESSION['OL_maths_index_no'];
-          $OL_english_grade=$_SESSION['OL_english_grade'];
-          $OL_englishexamination_year=$_SESSION['OL_englishexamination_year'];
-          $OL_english_index_no=$_SESSION['OL_english_index_no'];
-
-          $name1=$_SESSION['filename1'];
-          $tmp_name1=$_SESSION['tmp_name1'];
-          $location1=$_SESSION['location1'];
-
-          $name2=$_SESSION['filename2'];
-          $tmp_name2=$_SESSION['tmp_name2'];
-          $location2=$_SESSION['location2'];
-
-          $name3=$_SESSION['filename3'];
-          $tmp_name3=$_SESSION['tmp_name3'];
-          $location3=$_SESSION['location3'];
-
-          $name4=$_SESSION['filename4'];
-          $tmp_name4=$_SESSION['tmp_name4'];
-          $location4=$_SESSION['location4'];
-
-          $name5=$_SESSION['filename5'];
-          $tmp_name5=$_SESSION['tmp_name5'];
-          $location5=$_SESSION['location5'];
-
-          $name6=$_SESSION['filename6'];
-          $tmp_name6=$_SESSION['tmp_name6'];
-          $location6=$_SESSION['location6'];
-
-          $textarea=$_SESSION['textarea'];
-           
-
-            $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
-            $upload_file2=move_uploaded_file($tmp_name2, $location2.$name2);
-            $upload_file3=move_uploaded_file($tmp_name3, $location3.$name3);
-            $upload_file4=move_uploaded_file($tmp_name4, $location4.$name4);
-            $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
-            $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
-
-
-            $query="insert into student values('$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$name1','$location1','$name2','$location2','$name3','$location3','$name4','$location4','$name5','$location5','$name6','$location6','$textarea')";
-            $query_run = mysqli_query($con,$query);
-                         
-                        if ($query_run) {
-                          echo '<script type ="text/javascript"> alert("success") </script>';
-                          header('location:login.php');
-                          //email send here
-
-                        }
-                        else{
+            if(isset($_POST['recorrect'])){
+              $nic_no=$_SESSION['nic_no'];
+              $query="delete from students where nic_no='$nic_no'";
+               $query_run = mysqli_query($con,$query);
+              if ($query_run) { 
+                echo '<script type ="text/javascript"> alert("Success!") </script>';
+                 header('location:form.php');
+                }
+                else{
                            echo '<script type ="text/javascript"> alert("Error!") </script>';
                         }
-        
-           }
+            }
+
+           
 ?>
 <html lang="en">
   <head>
@@ -279,22 +217,19 @@ session_start();
             h1{
               padding-bottom: 15px;
             }
-            .btn-group{
+            .container-contact3-form-btn{
               margin-bottom: 40px;
               margin-top: 40px;
             }
         </style>
   </head> 
   <body style="color:white;">
-         
-         <div class="btn-group">
-            <button type="button" class="btn btn-primary" name="recorrect" onclick="location.href='form.php';">Recorrect</button>
-            <button type="button" class="btn btn-primary" name="submit">Submit</button>
-            
-         </div>
-
-          <br><br>
-         
-           
+        <form method="post">
+            <div class="container-contact3-form-btn">
+                <button  name="recorrect" class="btn btn-primary">Edit Information</button>
+                <button  name="submit" class="btn btn-primary" onclick="location.href='login.php';">Submit</button>    
+          </div>  
+        <br><br>
+        </form>   
   </body>
 </html> 
