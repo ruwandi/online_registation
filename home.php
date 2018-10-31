@@ -17,9 +17,9 @@
 		<body>
 		  <div class="body-content">
 		  <div class="module">     <h1>Register</h1>
-		    <form class="form" action="home.php" method="post" enctype="multipart/form-data" autocomplete="off">
+		    <form class="form" action="home.php" method="post" enctype="multipart/form-data" >
 		      <div class="alert alert-error"></div>
-		      <input type="text" placeholder="User Name" name="username" required />
+		      <input type="text" placeholder="NIC no" name="nic_no" required />
 		      <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
 		      <input type="password" placeholder="Password" name="password" autocomplete="new-password" required />
 		      <input type="password" placeholder="Confirm Password" name="confirmpassword" autocomplete="new-password" required />
@@ -29,22 +29,19 @@
 		    </form>
 		    <?php 
 		        if (isset($_POST['register'])) { 
-		          $username = $_POST['username'];
-		          $email = $_POST['email'];
-		          $_SESSION['email']=$email;
-		          $password= $_POST['password'];
-		          $cpassword = $_POST['confirmpassword'];
-		          if($password==$cpassword){
-
+		           $nic_no = $_POST['nic_no'];
+		           $email = $_POST['email'];
+		           $password= $_POST['password'];
+		           $cpassword = $_POST['confirmpassword'];
+		           if($password==$cpassword){
 		            $query= "select * from user WHERE email='$email'";
 		            $query_run=mysqli_query($con,$query);
 		            if (mysqli_num_rows($query_run)>0) {
-
-		              echo '<script type ="text/javascript"> alert("User already use that email... try another ") </script>';
+		               echo '<script type ="text/javascript"> alert("User already use that email... try another ") </script>';
 		            }
 		            else {
 		              $hash = password_hash($password,PASSWORD_BCRYPT);
-		              $query="insert into user values('$username','$email','$password')";
+		              $query="insert into user (nic_no,email,password) values ('$nic_no','$email','$password')";
 		              $query_run = mysqli_query($con,$query);
 		              if ($query_run) {
 		             		 echo '<script type ="text/javascript"> alert("User Registerd.. Go to login page to login") </script>';
