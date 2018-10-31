@@ -15,6 +15,9 @@
           $full_name=$_POST['full_name'];
           $_SESSION['full_name']=$full_name;
 
+          $email=$_POST['email'];
+          $_SESSION['email']=$email;
+
           $adress=$_POST['adress'];
           $_SESSION['adress']=$adress;
 
@@ -130,25 +133,24 @@
             $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
             $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
             
-
-
-              
-              $query="insert into students(course,name_with_initial,full_name,adress,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values('$course','$name_with_initial','$full_name','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+            $query="insert into students values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+            //$query="insert into students (course,name_with_initial,full_name,email,adress,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
+            
               
               $query_run = mysqli_query($con,$query);
               if ($query_run) { 
                 echo '<script type ="text/javascript"> alert("Success!") </script>';
-                 header('location:review.php');
+                header('location:review.php');
                 }
                 else{
                            echo '<script type ="text/javascript"> alert("Error!") </script>';
                         }
 
           
-                  
+                 
           } 
 
-          
+           
                 
 ?> 
 <html>
@@ -341,7 +343,7 @@
             <h2>Application Form</h2>
             </center>
 
-          <form  method="POST" enctype="multipart/form-data"  >
+          <form  method="POST" enctype="multipart/form-data" enctype="multipart/form-data" >
                 <div class="form-group">
                   <label for="course-apply">01.Course/s Apply:</label><br>
                     <select name="course" id="course" required>
@@ -366,42 +368,51 @@
                   </div>     
                 </div> 
 
+                <div class="form-group">
+                  <div class="wrap-input3 validate-input">
+                    <label for="full-name">04.Email:</label>
+                      <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+                  </div>     
+                </div> 
+
+                          
+
                <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="Address is required">
-                    <label for="address">04.Permanent Address:</label>
+                    <label for="address">05.Permanent Address:</label>
                       <input type="text" name="adress" class="form-control" id="usr" placeholder="Permanent Address"  required>
                   </div>     
                 </div>
 
                 <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="ID card is requireds">
-                   <label for="nic-no">05.National Identity Card Number:</label>
+                   <label for="nic-no">06.National Identity Card Number:</label>
                       <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,20}" id="usr" placeholder="National Identity Card Number" required>
                   </div>      
                 </div>
           
                  <div class="form-group">
                    <div class="wrap-input3 validate-input" data-validate="Distric is requireds">
-                    <label for="gender">06.District(Residence):</label><br>
+                    <label for="gender">07.District(Residence):</label><br>
                      <input type="text" name="distric" class="form-control" id="usr" placeholder="District(Residence)" required>
                   </div> 
                 </div>
             <div class="form-group">
               <div class="wrap-input3 validate-input" data-validate="Contact No is requireds">
-                    <label for="contact">07.Contact Telephone No/s:</label><br>
+                    <label for="contact">08.Contact Telephone No/s:</label><br>
                      <input type="text" name="mobile" class="form-control" pattern="[0-9].{1,20}" title="Please enter valid No"  id="usr" placeholder="Contact Telephone No mobile" required>
                   
                   </div>   
             </div>
                     
        <div class="form-group">     
-                <label for="gender">08.Gender:</label><br>
+                <label for="gender">09.Gender:</label><br>
                 <label class="radio-inline"><input type="radio" name="gender" >Male</label>
                 <label class="radio-inline"><input type="radio" name="gender">Female</label>
       </div>
                     
       <div class="form-group">
-                      <label for="result">09.Result of the G.C.E.(A/L) Examination:</label><br>
+                      <label for="result">10.Result of the G.C.E.(A/L) Examination:</label><br>
                       <table>
                         <tr>
                           <th>Index No:<input type="text" name="index_no" class="form-control" pattern="[1-9].{1,12}" title="Please enter valid index" id="usr" required></th>
@@ -459,7 +470,7 @@
             
 
                    <div class="form-group">
-                      <label for="result">10.Result of the G.C.E. (O/L) Examination:</label><br>
+                      <label for="result">11.Result of the G.C.E. (O/L) Examination:</label><br>
                       <table>
                         <tr>
                           <th>No</th>
@@ -524,7 +535,7 @@
                         </tr>
                       </table>
                 </div> 
-       <label for="course-apply">11.Document to be attached:</label>
+       <label for="course-apply">12.Document to be attached:</label>
 
        <div class="custom-file mb-3">
           <input type="file" class="custom-file-input" id="customFile" name="filename1" accept="application/pdf,image/*" required />
@@ -552,7 +563,7 @@
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="upload" name="filename6" accept="application/pdf,image/*" multiple="multiple"/>
+          <input type="file" class="custom-file-input" id="upload" name="filename6[]" accept="application/pdf,image/*" multiple="multiple"/>
           
           <label class="custom-file-label" for="customFile">If any certificate </label>
        </div>   
