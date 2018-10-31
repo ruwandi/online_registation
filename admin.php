@@ -150,12 +150,14 @@
             echo"<table>";
             if(isset($_POST['sbt'])){
              $id=$_POST['id'];
-             $_SESSION['id'] = $id;
-             $_SESSION['favcolor'] = 'green';
              $query="select * from students WHERE id='$id'";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
              $option1 = '';
                  while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
+                  $name_with_initial=$row['name_with_initial'];
+                  $distric=$row['distric'];
+                  $mobile=$row['mobile'];
+                  $name_with_initial=$row['name_with_initial'];
                   
                         echo "<tr><th>ID</th><th>";
                    if ($course='B.Sc(Special) Degree in Sport Sciences & Management') {
@@ -234,6 +236,23 @@
                         echo "</table>";
 
                         echo "<br>attached Document:";
+
+                        $id=$_POST['id'];
+         
+                      if (isset($_POST['select'])) {
+                        $query="select * from students WHERE id='$id'";
+                        $query_run = mysqli_query($con,$query);
+                          if ($query_run) { 
+                            if($course='B.Sc(Special) Degree in Sport Sciences & Management'){
+                            $quety1="insert into ssm (name_with_initial,full_name,district,mobile,email) values ('$name_with_initial','$full_name','$distric','$mobile','$email')";
+                          }
+                            /*echo '<script type ="text/javascript"> alert("Success!") </script>';
+                             header('location:review.php');*/
+                            }
+                            else{
+                                       echo '<script type ="text/javascript"> alert("Error!") </script>';
+                                    }
+                      }
                        
                         
          ?>
@@ -363,26 +382,7 @@
           
         <br><br>
           <?php }}
-          $id=$_POST['id'];
-          $name_with_initial=$_SESSION['name_with_initial'] ;
-          $full_name=$_SESSION['full_name'];
-          $distric=$_SESSION['distric'];
-          $mobile=$_SESSION['mobile'];
-          $email=$_SESSION['email'];
-          if (isset($_POST['select'])) {
-            $query="select * from students WHERE id='$id'";
-            $query_run = mysqli_query($con,$query);
-              if ($query_run) { 
-                if($course='B.Sc(Special) Degree in Sport Sciences & Management'){
-                $quety1="insert into ssm (name_with_initial,full_name,district,mobile,email) values ('$name_with_initial','$full_name','$distric','$mobile','$email')";
-              }
-                /*echo '<script type ="text/javascript"> alert("Success!") </script>';
-                 header('location:review.php');*/
-                }
-                else{
-                           echo '<script type ="text/javascript"> alert("Error!") </script>';
-                        }
-          }
+          
           
            ?>
           
