@@ -3,9 +3,11 @@ session_start();
   $con= mysqli_connect("localhost","root","")or die("Unable to connect");
          mysqli_select_db($con,'online_registration_system'); 
 
+          
           $course=$_SESSION['course'];  
           $name_with_initial=$_SESSION['name_with_initial'] ;
           $full_name=$_SESSION['full_name'];
+          $email=$_SESSION['email'];
           $adress=$_SESSION['adress'];
           $nic_no=$_SESSION['nic_no'];
           $distric=$_SESSION['distric'];
@@ -54,6 +56,7 @@ session_start();
 
           $textarea=$_SESSION['textarea'];
           
+          
           $query="select * from students WHERE nic_no='$nic_no'";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
               while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
@@ -64,6 +67,8 @@ session_start();
                         echo $name_with_initial;
                         echo "</td></tr><tr><td>Full name</td><td>";
                         echo $full_name;
+                        echo "</td></tr><tr><td>Email</td><td>";
+                        echo $email;
                         echo "</td></tr><tr><td>Address</td><td>";
                         echo $adress;
                         echo "</td></tr><tr><td>NIC_No</td><td>";
@@ -144,6 +149,19 @@ session_start();
             if(isset($_POST['recorrect'])){
               $nic_no=$_SESSION['nic_no'];
               $query="delete from students where nic_no='$nic_no'";
+               $query_run = mysqli_query($con,$query);
+              if ($query_run) { 
+                echo '<script type ="text/javascript"> alert("Success!") </script>';
+                 header('location:form.php');
+                }
+                else{
+                           echo '<script type ="text/javascript"> alert("Error!") </script>';
+                        }
+            }
+
+            if(isset($_POST['submit'])){
+              $course=$_SESSION['course'];
+              $query="";
                $query_run = mysqli_query($con,$query);
               if ($query_run) { 
                 echo '<script type ="text/javascript"> alert("Success!") </script>';
