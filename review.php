@@ -160,16 +160,43 @@ session_start();
             }
 
             if(isset($_POST['submit'])){
+
               $course=$_SESSION['course'];
-              $query="";
-               $query_run = mysqli_query($con,$query);
-              if ($query_run) { 
-                echo '<script type ="text/javascript"> alert("Success!") </script>';
-                 header('location:form.php');
+              if($course="B.Sc(Special) Degree in Sport Sciences & Management"){
+                  $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                   $query_run1 = mysqli_query($con,$query1);
+                      if ($query_run1) { 
+                        echo '<script type ="text/javascript"> alert("Success!") </script>';
+                         header('location:login.php');
+                                     }
+                       else{
+                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
+                                }
                 }
-                else{
-                           echo '<script type ="text/javascript"> alert("Error!") </script>';
-                        }
+
+                if($course="B.Sc(Special) Degree in Phyaical Education (PED)"){
+                  $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                   $query_run2 = mysqli_query($con,$query2);
+                      if ($query_run2) { 
+                        echo '<script type ="text/javascript"> alert("Success!") </script>';
+                         header('location:login.php');
+                                     }
+                       else{
+                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
+                                }
+                }
+
+                if($course="Both SSM & PED"){
+                  $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                   $query_run3 = mysqli_query($con,$query3);
+                      if ($query_run3) { 
+                        echo '<script type ="text/javascript"> alert("Success!") </script>';
+                         header('location:login.php');
+                                     }
+                       else{
+                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
+                                }
+                }
             }
 
            
