@@ -31,7 +31,15 @@
           $mobile=$_POST['mobile'];
           $_SESSION['mobile']=$mobile;
 
-          $gender=$_POST['gender'];
+          $gen=$_POST['gender'];
+          
+
+          if ($gen=="Male"){
+                    $gender="Male";
+                  }
+                  else{
+                    $gender="Female";
+                  }
           $_SESSION['gender']=$gender;
 
           $index_no=$_POST['index_no'];
@@ -407,9 +415,9 @@
                     
        <div class="form-group">     
                 <label for="gender">09.Gender:</label><br>
-                <label class="radio-inline"><input type="radio" name="gender" >Male</label>
-                <label class="radio-inline"><input type="radio" name="gender">Female</label>
-      </div>
+                <label class="radio-inline"><input type="radio" name="gen" >Male</label>
+                <label class="radio-inline"><input type="radio" name="gen">Female</label>
+
                     
       <div class="form-group">
                       <label for="result">10.Result of the G.C.E.(A/L) Examination:</label><br>
