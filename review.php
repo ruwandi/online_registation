@@ -54,6 +54,10 @@ session_start();
           $tmp_name6=$_SESSION['tmp_name6'];
           $location6=$_SESSION['location6'];
 
+          $name7=$_SESSION['filename7'];
+          $tmp_name7=$_SESSION['tmp_name7'];
+          $location7=$_SESSION['location7'];
+
           $textarea=$_SESSION['textarea'];
           
           
@@ -135,14 +139,16 @@ session_start();
                         echo "<img src='uploads/".$name1."'>";
                         echo "</th></tr><tr><td>Bank paying receipt</td><td>";
                         echo "<img src='uploads/".$name2."'>";
-                        echo "</td></tr><tr><td>Certificate copy of G.C.E(A/L)Certificate</td><td>";
+                        echo "</td></tr><tr><td>Certificate copy of G.C.E(A/L)Certificate </td><td>";
                         echo "<img src='uploads/".$name3."'>";
-                        echo "</td></tr><tr><td>Certificate copy of G.C.E(O/L)Certificate</td><td>";
+                        echo "</td></tr><tr><td>Certificate copy of G.C.E(O/L)Certificate for Mathematics</td><td>";
                         echo "<img src='uploads/".$name4."'>";
-                        echo "</td></tr><tr><td>If any affidavit </td><td>";
+                        echo "</td></tr><tr><td>Certificate copy of G.C.E(O/L)Certificate for English Language</td><td>";
                         echo "<img src='uploads/".$name5."'>";
-                        echo "</td></tr><tr><td>If any certificate</td><td>";
+                        echo "</td></tr><tr><td>If any affidavit </td><td>";
                         echo "<img src='uploads/".$name6."'>";
+                        echo "</td></tr><tr><td>If any certificate</td><td>";
+                        echo "<img src='uploads/".$name7."'>";
                         echo "</td></tr>";
                         echo "</table>";
                         }
@@ -160,43 +166,8 @@ session_start();
             }
 
             if(isset($_POST['submit'])){
-
-              $course=$_SESSION['course'];
-              if($course="B.Sc(Special) Degree in Sport Sciences & Management"){
-                  $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                   $query_run1 = mysqli_query($con,$query1);
-                      if ($query_run1) { 
-                        echo '<script type ="text/javascript"> alert("Success!") </script>';
-                         header('location:login.php');
-                                     }
-                       else{
-                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
-                                }
-                }
-
-                if($course="B.Sc(Special) Degree in Phyaical Education (PED)"){
-                  $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                   $query_run2 = mysqli_query($con,$query2);
-                      if ($query_run2) { 
-                        echo '<script type ="text/javascript"> alert("Success!") </script>';
-                         header('location:login.php');
-                                     }
-                       else{
-                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
-                                }
-                }
-
-                if($course="Both SSM & PED"){
-                  $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                   $query_run3 = mysqli_query($con,$query3);
-                      if ($query_run3) { 
-                        echo '<script type ="text/javascript"> alert("Success!") </script>';
-                         header('location:login.php');
-                                     }
-                       else{
-                                   echo '<script type ="text/javascript"> alert("Error!") </script>';
-                                }
-                }
+              header('location:login.php');
+             //email generate with information that successfully registre
             }
 
            

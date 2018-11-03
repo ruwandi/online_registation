@@ -116,8 +116,9 @@
            $_SESSION['tmp_name5']=$tmp_name5;
            $location5="uploads/"; 
            $_SESSION['location5']=$location5;
-//multiple file upload
 
+
+           
            $name6=$_FILES['filename6']['name'];
            $_SESSION['filename6']=$name6;
            $tmp_name6=$_FILES['filename6']['tmp_name'];
@@ -125,16 +126,24 @@
            $location6="uploads/";
            $_SESSION['location6']=$location6;
 
-          /* if (isset($_FILES['filename6'])) {
-                $myFile = $_FILES['filename6'];
-                $fileCount = count($myFile["name"]);
+           $name7=$_FILES['filename7']['name'];
+           $_SESSION['filename7']=$name7;
+           $tmp_name7=$_FILES['filename7']['tmp_name'];
+           $_SESSION['tmp_name7']=$tmp_name7;
+           $location7="uploads/";
+           $_SESSION['location7']=$location7;
 
-                for ($i = 0; $i < $fileCount; $i++) {
-                   $name6.$i=$myFile["name"][$i] ;
-                   $tmp_name6.$i=$myFile["tmp_name"][$i] ;
-                $upload_file6.$i=move_uploaded_file($tmp_name6.$i, $location6.$name6.$i );  
-                }
-            }*/
+           //multiple file upload
+
+          /*for($i = 0;$i<count($name6);$i++){
+            $name6=$_FILES['filename6']['name'][$i];
+            $_SESSION['filename6']=$name6;
+            $tmp_name6=$_FILES['filename6']['tmp_name'][$i];
+            $_SESSION['tmp_name6']=$tmp_name6;
+            if($tmp_name6 != ""){
+              $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
+            }
+          }*/
 
 
             $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
@@ -143,6 +152,7 @@
             $upload_file4=move_uploaded_file($tmp_name4, $location4.$name4);
             $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
             $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
+            $upload_file7=move_uploaded_file($tmp_name7, $location7.$name7);
             
             $query="insert into students (courase,name_with_initial,full_name,email,address,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
             //$query="insert into students (course,name_with_initial,full_name,email,adress,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
@@ -565,16 +575,21 @@
 
        <div class="custom-file mb-3">
           <input type="file" class="custom-file-input" id="customFile" name="filename4" accept="application/pdf,image/*" required />
-          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E (O/L)  Certificate</label>
+          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E (O/L)  Certificate for Mathematics</label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="application/pdf,image/*" />
+          <input type="file" class="custom-file-input" id="customFile" name="filename5" accept="application/pdf,image/*" required />
+          <label class="custom-file-label" for="customFile">Certificate copy of G.C.E (O/L)  Certificate for English Language</label>
+       </div>
+
+       <div class="custom-file mb-3">
+          <input type="file" class="custom-file-input" id="customFile" name="filename6" accept="application/pdf,image/*" />
           <label class="custom-file-label" for="customFile">If any affidavit </label>
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="upload" name="filename6" accept="application/pdf,image/*" multiple="multiple"/>
+          <input type="file" class="custom-file-input" id="upload" name="filename7" accept="application/pdf,image/*" multiple="multiple"/>
           
           <label class="custom-file-label" for="customFile">If any certificate </label>
        </div>   
