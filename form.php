@@ -31,15 +31,7 @@
           $mobile=$_POST['mobile'];
           $_SESSION['mobile']=$mobile;
 
-          $gen=$_POST['gender'];
-          
-
-          if ($gen=="Male"){
-                    $gender="Male";
-                  }
-                  else{
-                    $gender="Female";
-                  }
+          $gender=$_POST['gender'];
           $_SESSION['gender']=$gender;
 
           $index_no=$_POST['index_no'];
@@ -132,6 +124,17 @@
            $_SESSION['tmp_name6']=$tmp_name6;
            $location6="uploads/";
            $_SESSION['location6']=$location6;
+
+          /* if (isset($_FILES['filename6'])) {
+                $myFile = $_FILES['filename6'];
+                $fileCount = count($myFile["name"]);
+
+                for ($i = 0; $i < $fileCount; $i++) {
+                   $name6.$i=$myFile["name"][$i] ;
+                   $tmp_name6.$i=$myFile["tmp_name"][$i] ;
+                $upload_file6.$i=move_uploaded_file($tmp_name6.$i, $location6.$name6.$i );  
+                }
+            }*/
 
 
             $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
@@ -415,8 +418,8 @@
                     
        <div class="form-group">     
                 <label for="gender">09.Gender:</label><br>
-                <label class="radio-inline"><input type="radio" name="gen" >Male</label>
-                <label class="radio-inline"><input type="radio" name="gen">Female</label>
+                <label class="radio-inline"><input type="radio" name="gender" >Male</label>
+                <label class="radio-inline"><input type="radio" name="gender">Female</label>
 
                     
       <div class="form-group">
@@ -571,7 +574,7 @@
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="upload" name="filename6[]" accept="application/pdf,image/*" multiple="multiple"/>
+          <input type="file" class="custom-file-input" id="upload" name="filename6" accept="application/pdf,image/*" multiple="multiple"/>
           
           <label class="custom-file-label" for="customFile">If any certificate </label>
        </div>   
