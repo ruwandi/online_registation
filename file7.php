@@ -4,7 +4,7 @@ session_start();
          mysqli_select_db($con,'online_registration_system'); 
 
 $id=$_SESSION['id'];
-$name3=$_SESSION['filename3'];
+$name7=$_SESSION['filename7'];
 $query="select * from students WHERE id='$id'";
  $qurey_run=mysqli_query($con,$query) or die('error getting');
 
@@ -34,7 +34,7 @@ $query="select * from students WHERE id='$id'";
       <body>
         <div class="container">
           <div class="file" >
-            <?php echo "<img src='uploads/".$name3."'>"; } ?>
+            <?php echo "<img src='uploads/".$name7."'>"; } ?>
             </table>
             
 

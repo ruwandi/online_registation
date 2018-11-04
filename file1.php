@@ -1,11 +1,11 @@
 			<?php 
 			session_start(); 
 			  $con= mysqli_connect("localhost","root","")or die("Unable to connect");
-			         mysqli_select_db($con,'mini_project'); 
+			         mysqli_select_db($con,'online_registration_system'); 
 
 			$id=$_SESSION['id'];
-			$name1=$_SESSION['filename1'];
-			$query="select * from student WHERE id='$id'";
+			$name1=$_SESSION['name1'];
+			$query="select * from students WHERE id='$id'";
 			 $qurey_run=mysqli_query($con,$query) or die('error getting');
 
 			 while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){

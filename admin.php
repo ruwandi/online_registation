@@ -77,7 +77,7 @@
            
                    <?php 
                          
-                        $query1= "select * from students WHERE course='B.Sc(Special) Degree in Sport Sciences & Management'";
+                        $query1= "select * from students WHERE courase='B.Sc(Special) Degree in Sport Sciences & Management'";
                         $qurey_run1= mysqli_query($con,$query1);
                         $option1 = '';
                         while($row = mysqli_fetch_array($qurey_run1,MYSQLI_ASSOC)){
@@ -85,7 +85,7 @@
                            /*$option1 .= '<option value = "'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'">'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'</option>';*/
                                     }
 
-                        $query2="select * from students WHERE course='B.Sc(Special) Degree in Phyaical Education (PED)'";
+                        $query2="select * from students WHERE courase='B.Sc(Special) Degree in Phyaical Education (PED)'";
                         $qurey_run2= mysqli_query($con,$query2);
                         $option2 = '';
                         while($row = mysqli_fetch_array($qurey_run2,MYSQLI_ASSOC)){
@@ -93,7 +93,7 @@
                             /*$option2 .= '<option value = "'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'">'."20/AS/SS/".$row['id']." | ".$row['name_with_initial'].'</option>';*/
                                     }
 
-                        $query3="select * from students WHERE course='Both SSM & PED'";
+                        $query3="select * from students WHERE courase='Both SSM & PED'";
                         $qurey_run3= mysqli_query($con,$query3);
                         $option3 = '';
                         while($row = mysqli_fetch_array($qurey_run3,MYSQLI_ASSOC)){
@@ -106,7 +106,7 @@
                     <?php 
             if(isset($_POST['submit'])){
              $course=$_POST['course'];
-             $query="select * from students WHERE course='$course'";
+             $query="select * from students WHERE courase='$course'";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
              $option1 = '';
                  while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
@@ -150,14 +150,38 @@
             echo"<table>";
             if(isset($_POST['sbt'])){
              $id=$_POST['id'];
+             $_SESSION['id']=$id;
              $query="select * from students WHERE id='$id'";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
              $option1 = '';
                  while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
-                  $name_with_initial=$row['name_with_initial'];
+                  $course=$row['courase'];
+                  $full_name=$row['full_name'];
                   $distric=$row['distric'];
                   $mobile=$row['mobile'];
                   $name_with_initial=$row['name_with_initial'];
+                  $email=$row['email'];
+                  $name1=$row['name1'];
+                  $_SESSION['name1']=$name1;
+
+                  $name2=$row['name2'];
+                  $_SESSION['name2']=$name2;
+
+                  $name3=$row['name3'];
+                  $_SESSION['name3']=$name3;
+
+                  $name4=$row['name4'];
+                  $_SESSION['name4']=$name4;
+
+                  $name5=$row['name5'];
+                  $_SESSION['name5']=$name5;
+
+                  $name6=$row['name6'];
+                  $_SESSION['name6']=$name6;
+
+                  $name7=$row['name7'];
+                  $_SESSION['name7']=$name7;
+
                   
                         echo "<tr><th>ID</th><th>";
                    if ($course='B.Sc(Special) Degree in Sport Sciences & Management') {
@@ -171,13 +195,15 @@
                    }
                        
                         echo "</th><tr><td>Course Apply</td><td>";
-                        echo $row['course'];
+                        echo $row['courase'];
                         echo "</td></tr><tr><td>Name with initial</td><td>";
                         echo $row['name_with_initial'];
                         echo "</td></tr><tr><td>Full name</td><td>";
                         echo $row['full_name'];
+                        echo "</td></tr><tr><td>Email</td><td>";
+                        echo $row['email'];
                         echo "</td></tr><tr><td>Address</td><td>";
-                        echo $row['adress'];
+                        echo $row['address'];
                         echo "</td></tr><tr><td>NIC_No</td><td>";
                         echo $row['nic_no'];
                         echo "</td></tr><tr><td>District</td><td>";
@@ -237,23 +263,35 @@
 
                         echo "<br>attached Document:";
 
-                        $id=$_POST['id'];
-         
-                      if (isset($_POST['select'])) {
-                        $query="select * from students WHERE id='$id'";
-                        $query_run = mysqli_query($con,$query);
-                          if ($query_run) { 
-                            if($course='B.Sc(Special) Degree in Sport Sciences & Management'){
-                            $quety1="insert into ssm (name_with_initial,full_name,district,mobile,email) values ('$name_with_initial','$full_name','$distric','$mobile','$email')";
+                        if (isset($_POST['select'])) {
+
+                        if($course="B.Sc(Special) Degree in Sport Sciences & Management"){
+                            $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                            $query_run1 = mysqli_query($con,$query1);
+                                if ($query_run1) { echo '<script type ="text/javascript"> alert("Success!") </script>'; }
+                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
                           }
-                            /*echo '<script type ="text/javascript"> alert("Success!") </script>';
-                             header('location:review.php');*/
-                            }
-                            else{
-                                       echo '<script type ="text/javascript"> alert("Error!") </script>';
-                                    }
-                      }
+                      
+
+
+                       if($course="B.Sc(Special) Degree in Phyaical Education (PED)"){
+                           $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                           $query_run2 = mysqli_query($con,$query2);
+                                if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
+                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
+                          }
+
+
+
+                      if($course="Both SSM & PED"){
+                         $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                         $query_run3 = mysqli_query($con,$query3);
+                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
+                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+                        }
                        
+            }
+
                         
          ?>
          <table>
@@ -271,8 +309,8 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok1" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok1">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -288,8 +326,8 @@
                   }
                   </script></td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok ">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok2" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok2 ">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -306,8 +344,8 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok3" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok3">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -315,7 +353,7 @@
          </tr>
 
          <tr>
-            <td>Certificate copy of G.C.E(O/L)Certificate</td>
+            <td>Certificate copy of G.C.E(O/L) Certificate for Mathematics</td>
             <td> <button onclick="myFunction4()" class="btn btn-block btn-primary" >Click</button>
                   <script>
                   function myFunction4() {
@@ -324,8 +362,8 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok4" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok4">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -333,7 +371,7 @@
          </tr>
 
          <tr>
-            <td>If any affidavit</td>
+            <td>Certificate copy of G.C.E(O/L) Certificate for English Language</td>
             <td> <button onclick="myFunction5()" class="btn btn-block btn-primary" >Click</button>
                   <script>
                   function myFunction5() {
@@ -342,8 +380,26 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok5" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok5">    NOT OK</label>
+            </td>
+            <td>
+              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+            </td>
+         </tr>
+
+         <tr>
+            <td>If any affidavit</td>
+            <td> <button onclick="myFunction6()" class="btn btn-block btn-primary" >Click</button>
+                  <script>
+                  function myFunction6() {
+                      window.open("file6.php");
+                  }
+                  </script>
+            </td>
+            <td>
+               <label class="radio-inline"><input type="radio" name="ok6" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok6">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -352,16 +408,16 @@
 
          <tr>
             <td>If any certificate</td>
-            <td><button onclick="myFunction6()" class="btn btn-block btn-primary" >Click</button>
+            <td><button onclick="myFunction7()" class="btn btn-block btn-primary" >Click</button>
                   <script>
-                  function myFunction6() {
-                      window.open("file6.php");
+                  function myFunction7() {
+                      window.open("file7.php");
                   }
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="condition" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="condition">    NOT OK</label>
+               <label class="radio-inline"><input type="radio" name="ok7" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="not_ok7">    NOT OK</label>
             </td>
             <td>
               <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
@@ -381,10 +437,7 @@
             </form>
           
         <br><br>
-          <?php }}
-          
-          
-           ?>
+          <?php    }} ?>
           
   </body>
 </html>
