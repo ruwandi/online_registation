@@ -428,9 +428,9 @@
                     
        <div class="form-group">     
                 <label for="gender">09.Gender:</label><br>
-                <label class="radio-inline"><input type="radio" name="gender" >Male</label>
-                <label class="radio-inline"><input type="radio" name="gender">Female</label>
-
+                <label class="radio-inline"><input type="radio" name="gender" value="male" required>Male</label>
+                <label class="radio-inline"><input type="radio" name="gender" value="female" required>Female</label>
+        </div>
                     
       <div class="form-group">
                       <label for="result">10.Result of the G.C.E.(A/L) Examination:</label><br>
