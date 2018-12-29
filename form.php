@@ -356,7 +356,7 @@
 }
      </style>
   </head>
-  <body style="color:white;">
+  <body style="color:white; background-color:#668cff;">
     <div class="bg-contact3" style="background-image: url('01.jpg');">
      <div class="container-contact3">
       <div class="container">

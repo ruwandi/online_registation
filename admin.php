@@ -263,40 +263,7 @@
 
                         echo "<br>attached Document:";
 
-                        if (isset($_POST['select'])) {
-                           $course=$row['courase'];
-                            $full_name=$row['full_name'];
-                            $distric=$row['distric'];
-                            $mobile=$row['mobile'];
-                            $name_with_initial=$row['name_with_initial'];
-                            $email=$row['email'];
-                            
-                        if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
-                            $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                            $query_run1 = mysqli_query($con,$query1);
-                                if ($query_run1) { echo '<script type ="text/javascript"> alert("Success!") </script>'; }
-                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
-                          }
-                      
-
-
-                        if($course == 'B.Sc(Special) Degree in Phyaical Education (PED)'){
-                           $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                           $query_run2 = mysqli_query($con,$query2);
-                                if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
-                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
-                          }
-
-
-
-                      if($course =='Both SSM & PED'){
-                         $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                         $query_run3 = mysqli_query($con,$query3);
-                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
-                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
-                        }
                        
-            }
 
                         
          ?>
@@ -444,6 +411,49 @@
           
         <br><br>
           <?php    }} ?>
+          <?php 
+             if (isset($_POST['select'])) {
+                            $course=$row['courase'];
+                            echo $course;
+                            $full_name=$row['full_name'];
+                            echo $full_name;
+                            $distric=$row['distric'];
+                            echo $distric;
+                            $mobile=$row['mobile'];
+                            echo $mobile;
+                            $name_with_initial=$row['name_with_initial'];
+                            $email=$row['email'];
+                            echo $email;
+
+                          
+                        /*if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
+                            $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                            $query_run1 = mysqli_query($con,$query1);
+                                if ($query_run1) { echo '<script type ="text/javascript"> alert("Success!") </script>'; }
+                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
+                          }
+                      
+
+
+                        if($course == 'B.Sc(Special) Degree in Phyaical Education (PED)'){
+                           $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                           $query_run2 = mysqli_query($con,$query2);
+                                if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
+                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
+                          }
+
+
+
+                      if($course =='Both SSM & PED'){
+                         $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                         $query_run3 = mysqli_query($con,$query3);
+                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
+                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+                        }*/
+                       
+            }
+
+           ?>
           
   </body>
 </html>
