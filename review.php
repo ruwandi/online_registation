@@ -168,6 +168,7 @@ session_start();
             if(isset($_POST['submit'])){
               header('location:login.php');
              //email generate with information that successfully registre
+              //build email content
             }
 
            
