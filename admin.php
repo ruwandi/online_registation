@@ -156,11 +156,23 @@
              $option1 = '';
                  while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
                   $course=$row['courase'];
+                  $_SESSION['course']=$course;
+
                   $full_name=$row['full_name'];
+                  $_SESSION['full_name']=$full_name;
+
                   $distric=$row['distric'];
+                  $_SESSION['distric']=$distric;
+
                   $mobile=$row['mobile'];
+                  $_SESSION['mobile']=$mobile;
+
                   $name_with_initial=$row['name_with_initial'];
+                  $_SESSION['name_with_initial']=$name_with_initial;
+
                   $email=$row['email'];
+                  $_SESSION['emali']=$email;
+
                   $name1=$row['name1'];
                   $_SESSION['name1']=$name1;
 
@@ -410,49 +422,54 @@
             </form>
           
         <br><br>
-          <?php    }} ?>
+          <?php }} ?>
           <?php 
              if (isset($_POST['select'])) {
-                            $course=$row['courase'];
-                            echo $course;
-                            $full_name=$row['full_name'];
-                            echo $full_name;
-                            $distric=$row['distric'];
-                            echo $distric;
-                            $mobile=$row['mobile'];
-                            echo $mobile;
-                            $name_with_initial=$row['name_with_initial'];
-                            $email=$row['email'];
-                            echo $email;
-
-                          
-                        /*if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
+                            $id=$_SESSION['id'];
+                            $course=$_SESSION['course'];
+                            $full_name=$_SESSION['full_name'];
+                            $distric=$_SESSION['distric'];
+                            $mobile=$_SESSION['mobile'];
+                            $name_with_initial=$_SESSION['name_with_initial'];
+                            $email=$_SESSION['email'];
+                            
+                            if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
                             $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
                             $query_run1 = mysqli_query($con,$query1);
                                 if ($query_run1) { echo '<script type ="text/javascript"> alert("Success!") </script>'; }
                                 else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
                           }
-                      
-
-
-                        if($course == 'B.Sc(Special) Degree in Phyaical Education (PED)'){
+                          
+                          if($course == 'B.Sc(Special) Degree in Phyaical Education (PED)'){
                            $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
                            $query_run2 = mysqli_query($con,$query2);
                                 if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
                                 else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
                           }
-
-
-
-                      if($course =='Both SSM & PED'){
+                         
+                         if($course =='Both SSM & PED'){
                          $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
                          $query_run3 = mysqli_query($con,$query3);
                                if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
-                        }*/
+                        }
                        
             }
 
+            if (isset($_POST['reject'])) {
+                            $id=$_SESSION['id'];
+                            $course=$_SESSION['course'];
+                            $full_name=$_SESSION['full_name'];
+                            $distric=$_SESSION['distric'];
+                            $mobile=$_SESSION['mobile'];
+                            $name_with_initial=$_SESSION['name_with_initial'];
+                            $email=$_SESSION['email'];
+
+                            $query3= "insert into reject_student(fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                         $query_run3 = mysqli_query($con,$query3);
+                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
+                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+             }
            ?>
           
   </body>
