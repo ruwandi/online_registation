@@ -4,7 +4,7 @@ session_start();
          mysqli_select_db($con,'online_registration_system'); 
 
 $id=$_SESSION['id'];
-$name4=$_SESSION['filename4'];
+$name4=$_SESSION['name4'];
 $query="select * from students WHERE id='$id'";
  $qurey_run=mysqli_query($con,$query) or die('error getting');
 
