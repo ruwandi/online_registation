@@ -1,5 +1,7 @@
 <?php  
   session_start(); 
+  $_SESSION = array();
+  session_destroy();
   $con= mysqli_connect("localhost","root","")or die("Unable to connect");
          mysqli_select_db($con,'online_registration_system'); 
 
@@ -13,8 +15,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
        <meta name="viewport" content="width=device-width, initial-scale=1">
        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
@@ -65,12 +66,35 @@
             .btn-group{
               margin-bottom: 40px;
             }
+            .navbar{
+              margin-top: 20px;
+              margin-left: 10px;
+              margin-right: 10px;
+              background-color: #1a1a;
+              border-radius: 2px;
+              border-color: white;
+
+            }
         </style>
   </head> 
   <body style="color:white;">
-          <center class="head">
-            <h1>Student Management</h1>
-          </center>
+           <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <a class="navbar-brand" href="#">Student Management</a>
+                </div>
+                <ul class="nav navbar-nav">
+                  <li><a href="admin.php">Home</a></li>
+                  <li><a href="ssm.php">SSM</a></li>
+                  <li><a href="ped.php">PED</a></li>
+                  <li><a href="smpe.php">SMPE</a></li>
+                  <li><a href="reject.php">REJECT</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+                </ul>
+              </div>
+            </nav>
 
     <div class="container">
 
@@ -281,7 +305,7 @@
          ?>
          <table>
           <tr>
-            <th>Attched document</th><th>Document</th><th>Condition</th><th>Comment</th>
+            <th>Attched document</th><th>Document</th><th>Comment</th>
           </tr>
           <tr>
             <td>Payment voucher</td>
@@ -294,11 +318,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok1" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok1">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5" name="commit1" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -311,11 +331,7 @@
                   }
                   </script></td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok2" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok2 ">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5"  name="commit2" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -329,11 +345,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok3" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok3">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5" name="commit3" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -347,11 +359,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok4" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok4">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5" name="commit4" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -365,11 +373,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok5" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok5">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5"  name="commit5" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -383,11 +387,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok6" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok6">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5"  name="commit6" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -401,11 +401,7 @@
                   </script>
             </td>
             <td>
-               <label class="radio-inline"><input type="radio" name="ok7" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="not_ok7">    NOT OK</label>
-            </td>
-            <td>
-              <textarea class="form-control" rows="5" id="comment" name="textarea" title="comment feedback about document"></textarea>
+              <textarea class="form-control" rows="5"  name="commit7" title="comment feedback about document"></textarea>
             </td>
          </tr>
          </table>
@@ -416,9 +412,7 @@
               <div class="container-contact3-form-btn">
               <button  name="select" class="btn btn-primary">Select</button>
               <button  name="reject" class="btn btn-primary">Reject</button>
-              <button  name="shedule" class="btn btn-primary">Shedule</button>
-              
-        </div>
+              </div>
             </form>
           
         <br><br>
@@ -431,7 +425,7 @@
                             $distric=$_SESSION['distric'];
                             $mobile=$_SESSION['mobile'];
                             $name_with_initial=$_SESSION['name_with_initial'];
-                            $email=$_SESSION['email'];
+                            $email=$_SESSION['emali'];
                             
                             if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
                             $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
@@ -463,9 +457,16 @@
                             $distric=$_SESSION['distric'];
                             $mobile=$_SESSION['mobile'];
                             $name_with_initial=$_SESSION['name_with_initial'];
-                            $email=$_SESSION['email'];
+                            $email=$_SESSION['emali'];
+                            $Payment_voucher=$_POST['commit1'];
+                            $Bank_paying_receipt=$_POST['commit2'];
+                            $ALC=$_POST['commit3'];
+                            $OLC_M=$_POST['commit4'];
+                            $OLC_E=$_POST['commit5'];
+                            $If_any_affidavit=$_POST['commit6'];
+                            $If_any_certificate=$_POST['commit7'];
 
-                            $query3= "insert into reject_student(fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                            $query3= "insert into reject_student(fullname,mobile,email,distric,Payment voucher,Bank paying receipt,Certificate copy of G.C.E(A/L) Certificate,Certificate copy of G.C.E(O/L) Certificate for Mathematics,Certificate copy of G.C.E(O/L) Certificate for English Language,If any affidavit,If any certificate) values ('$full_name','$mobile','$email','$distric','$Payment_voucher','$Bank_paying_receipt','$ALC','$OLC_M','$OLC_E','$If_any_affidavit','$If_any_certificate')";
                          $query_run3 = mysqli_query($con,$query3);
                                if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
