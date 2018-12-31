@@ -1,11 +1,14 @@
-<?php  
-  session_start(); 
-  $_SESSION = array();
-  session_destroy();
-  $con= mysqli_connect("localhost","root","")or die("Unable to connect");
+<?php session_start(); ?>
+<?php 
+          $con= mysqli_connect("localhost","root","")or die("Unable to connect");
          mysqli_select_db($con,'online_registration_system'); 
-
 ?>
+<?php 
+  //check if a user is logged in
+  if(!isset($_SESSION['email'])){
+    header('Location:admin_login.php');
+  }
+ ?>
 <html lang="en">
   <head>
       <title></title>
@@ -91,7 +94,7 @@
                   <li><a href="reject.php">REJECT</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="login.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+                  <li><a href="logout.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
                 </ul>
               </div>
             </nav>
