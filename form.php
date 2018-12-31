@@ -1,9 +1,15 @@
+<?php session_start(); ?>
 <?php 
-        session_start();
           $con= mysqli_connect("localhost","root","")or die("Unable to connect");
          mysqli_select_db($con,'online_registration_system'); 
-
-
+?>
+<?php 
+  //check if a user is logged in
+  if(!isset($_SESSION['email'])){
+    header('Location:login.php');
+  }
+ ?>
+<?php 
         if(isset($_POST['preview'])){
           
           $course=$_POST['course'];
@@ -354,9 +360,52 @@
               content: "";
               display: block;                                                              
 }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f0f3d;
+}
+.nev{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
      </style>
   </head>
   <body style="color:white; background-color:#668cff;">
+    <!-- nav bar -->
+    <div class="nev">
+        <ul>
+        <li><a href="login.php">Student Login</a></li>
+        <li><a href="home.php">Student Register</a></li>
+        <li><a href="admin_login.php">Admin Login</a></li>
+        <li><a href="admin_register.php">Admin Register</a></li>
+        <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
+      </ul>
+      </div>
+      
     <div class="bg-contact3" style="background-image: url('01.jpg');">
      <div class="container-contact3">
       <div class="container">
