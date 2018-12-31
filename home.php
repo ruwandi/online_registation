@@ -12,11 +12,53 @@
 		      body{
 		        background:url('http://clevertechie.com/img/bnet-bg.jpg') #0f2439;
 		      }
+		      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f0f3d;
+}
+.nev{
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
 		  </style>
 		</head>
 		<body>
+			<!-- nev bar -->
+			<div class="nev">
+			   	<ul>
+				  <li><a href="login.php">Student Login</a></li>
+				  <li><a href="home.php">Student Register</a></li>
+				  <li><a href="admin_login.php">Admin Login</a></li>
+				  <li><a href="admin_register.php">Admin Register</a></li>
+				  <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
+				</ul>
+			   </div>
 		  <div class="body-content">
-		  <div class="module">     <h1>Register</h1>
+		  <div class="module">     <h1> Student Register</h1>
 		    <form class="form" action="home.php" method="post" enctype="multipart/form-data" >
 		      <div class="alert alert-error"></div>
 		      <input type="text" placeholder="NIC no" name="nic_no" required />
@@ -40,8 +82,8 @@
 		               echo '<script type ="text/javascript"> alert("User already use that email... try another ") </script>';
 		            }
 		            else {
-		              $hash = password_hash($password,PASSWORD_BCRYPT);
-		              $query="insert into user (nic_no,email,password) values ('$nic_no','$email','$password')";
+		              $hash = sha1($password);
+		              $query="insert into user (nic_no,email,password) values ('$nic_no','$email','$hash')";
 		              $query_run = mysqli_query($con,$query);
 		              if ($query_run) {
 		             		 header('location:login.php');
