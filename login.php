@@ -12,12 +12,54 @@
 	      body{
 	        background:url('http://clevertechie.com/img/bnet-bg.jpg') #0f2439;
 	      }
+	      ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f0f3d;
+}
+.nev{
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+}
 	    </style>
 	</head>
 	<body>
+
+		 <div class="nev">
+		   	<ul>
+			  <li><a href="login.php">Student Login</a></li>
+			  <li><a href="home.php">Student Register</a></li>
+			  <li><a href="admin_login.php">Admin Login</a></li>
+			  <li><a href="admin_register.php">Admin Register</a></li>
+			  <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
+			</ul>
+		   </div>
 		<div class="body-content">
 		    <div class="module">
-		    <h1>Login</h1>
+		    <h1>Student Login</h1>
 		    <form class="form" action="login.php" method="post" enctype="multipart/form-data" autocomplete="off">
 			    <div class="alert alert-error"></div>
 			    <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
@@ -27,17 +69,13 @@
 		    </form>
 
 		    <?php 
+		    
 		        if(isset($_POST['login'])){
 		          $email=$_POST['email'];
 		          $password=$_POST['password'];
-
-		          $query="select * from user WHERE email='$email' AND password='$password'";
+		          $hash = sha1($password);
+		          $query="select * from user WHERE email='$email' AND password='$hash'";
 		          $qurey_run = mysqli_query($con,$query);
-
-			          if (($email=='ruwandi1102@gmail.com')&&($password=='doni1102@')) {
-			            header('location:admin.php');
-			              }
-			          else{
 					        if (mysqli_num_rows($qurey_run)>0){
 					              $_SESSION['email']=$email;
 					              header('location:form.php');
@@ -45,7 +83,7 @@
 					            else{
 					              echo '<script type ="text/javascript"> alert("Invalid credentials") </script>';
 					            }
-			              }
+			              
 		            }
 
 
