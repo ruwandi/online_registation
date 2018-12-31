@@ -1,4 +1,4 @@
- ?>
+
 <?php session_start(); ?>
 <?php 
           $con= mysqli_connect("localhost","root","")or die("Unable to connect");

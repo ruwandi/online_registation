@@ -95,6 +95,7 @@
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="logout.php"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+                  <li><a href="admin_register.php">New Admin</a></li>
                 </ul>
               </div>
             </nav>
@@ -157,7 +158,7 @@
             </form>
           </div>
           <div class="column">
-            <form action="" method="post">
+            <form action="" method="post" >
                 <div class="form-group">
                   <!-- <br><label><h3>Select Student That registered for The Examination:</h3></label> -->
                    <select name="id"> <?php echo $option1; ?> </select>    
@@ -321,7 +322,7 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5" name="commit1" title="comment feedback about document"></textarea>
+              <textarea class="form-control"  rows="5" name="commit1" title="comment feedback about document"></textarea>
             </td>
          </tr>
 
@@ -411,7 +412,7 @@
 
           <br><br>
           
-            <form method="post">
+            <form method="post" id="usrform">
               <div class="container-contact3-form-btn">
               <button  name="select" class="btn btn-primary">Select</button>
               <button  name="reject" class="btn btn-primary">Reject</button>
@@ -461,15 +462,15 @@
                             $mobile=$_SESSION['mobile'];
                             $name_with_initial=$_SESSION['name_with_initial'];
                             $email=$_SESSION['emali'];
-                            $Payment_voucher=$_POST['commit1'];
+                           /* $Payment_voucher=$_POST['commit1'];
                             $Bank_paying_receipt=$_POST['commit2'];
                             $ALC=$_POST['commit3'];
                             $OLC_M=$_POST['commit4'];
                             $OLC_E=$_POST['commit5'];
                             $If_any_affidavit=$_POST['commit6'];
-                            $If_any_certificate=$_POST['commit7'];
+                            $If_any_certificate=$_POST['commit7'];*/
 
-                            $query3= "insert into reject_student(fullname,mobile,email,distric,Payment voucher,Bank paying receipt,Certificate copy of G.C.E(A/L) Certificate,Certificate copy of G.C.E(O/L) Certificate for Mathematics,Certificate copy of G.C.E(O/L) Certificate for English Language,If any affidavit,If any certificate) values ('$full_name','$mobile','$email','$distric','$Payment_voucher','$Bank_paying_receipt','$ALC','$OLC_M','$OLC_E','$If_any_affidavit','$If_any_certificate')";
+                            $query3= "insert into reject_student(fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
                          $query_run3 = mysqli_query($con,$query3);
                                if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }

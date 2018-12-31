@@ -74,7 +74,6 @@ hr {
 			  <li><a href="login.php">Student Login</a></li>
 			  <li><a href="home.php">Student Register</a></li>
 			  <li><a href="admin_login.php">Admin Login</a></li>
-			  <li><a href="admin_register.php">Admin Register</a></li>
 			  <li style="float:right"><a class="active" href="welcom.php">Log Out</a></li>
 			</ul>
 		   </div>
