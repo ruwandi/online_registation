@@ -101,8 +101,6 @@
             </nav>
 
     <div class="container">
-
-           
                    <?php 
                          
                         $query1= "select * from students WHERE courase='B.Sc(Special) Degree in Sport Sciences & Management'";
@@ -309,7 +307,7 @@
          ?>
          <table>
           <tr>
-            <th>Attched document</th><th>Document</th><th>Comment</th>
+            <th>Attched document</th><th>Document</th><th>Condition</th>
           </tr>
           <tr>
             <td>Payment voucher</td>
@@ -322,8 +320,10 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control"  rows="5" name="commit1" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok1" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok1">    NOT OK</label>
             </td>
+            
          </tr>
 
          <tr>
@@ -335,8 +335,10 @@
                   }
                   </script></td>
             <td>
-              <textarea class="form-control" rows="5"  name="commit2" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok2" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok2 ">    NOT OK</label>
             </td>
+           
          </tr>
 
          <tr>
@@ -349,8 +351,10 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5" name="commit3" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok3" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok3">    NOT OK</label>
             </td>
+            
          </tr>
 
          <tr>
@@ -363,8 +367,10 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5" name="commit4" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok4" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok4">    NOT OK</label>
             </td>
+            
          </tr>
 
          <tr>
@@ -377,8 +383,10 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5"  name="commit5" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok5" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok5">    NOT OK</label>
             </td>
+            
          </tr>
 
          <tr>
@@ -391,8 +399,10 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5"  name="commit6" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok6" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok6">    NOT OK</label>
             </td>
+            
          </tr>
 
          <tr>
@@ -405,14 +415,21 @@
                   </script>
             </td>
             <td>
-              <textarea class="form-control" rows="5"  name="commit7" title="comment feedback about document"></textarea>
+               <label class="radio-inline"><input type="radio" name="ok7" >   OK</label>
+               <label class="radio-inline"><input type="radio" name="ok7">    NOT OK</label>
             </td>
+            
          </tr>
          </table>
 
           <br><br>
           
             <form method="post" id="usrform">
+                <div class="form-group">
+                  <label for="comment"> Any Comment:</label>
+                  <textarea class="form-control" rows="5" id="comment" name="textarea" title="Please put a comment that you want to tell Students"></textarea>
+                </div>
+
               <div class="container-contact3-form-btn">
               <button  name="select" class="btn btn-primary">Select</button>
               <button  name="reject" class="btn btn-primary">Reject</button>
@@ -462,6 +479,7 @@
                             $mobile=$_SESSION['mobile'];
                             $name_with_initial=$_SESSION['name_with_initial'];
                             $email=$_SESSION['emali'];
+                            $textarea=$_POST['textarea'];
                            /* $Payment_voucher=$_POST['commit1'];
                             $Bank_paying_receipt=$_POST['commit2'];
                             $ALC=$_POST['commit3'];
@@ -470,7 +488,7 @@
                             $If_any_affidavit=$_POST['commit6'];
                             $If_any_certificate=$_POST['commit7'];*/
 
-                            $query3= "insert into reject_student(fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
+                            $query3= "insert into reject_student(fullname,mobile,email,distric,commit) values ('$full_name','$mobile','$email','$distric','$textarea')";
                          $query_run3 = mysqli_query($con,$query3);
                                if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }

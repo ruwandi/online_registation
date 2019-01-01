@@ -108,7 +108,7 @@
              $query="select * from reject_student";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
                        echo "<table>";
-                        echo "<tr><th>Id</th><th>Full Name</th><th>Mobile</th><th>Email</th><th>Distric</th></tr>";
+                        echo "<tr><th>Id</th><th>Full Name</th><th>Mobile</th><th>Email</th><th>Distric</th><th>Commit</th></tr>";
               while($row = mysqli_fetch_array($qurey_run,MYSQLI_ASSOC)){
                         echo "<tr><td>";
                         echo $row['id_rej'];
@@ -120,6 +120,8 @@
                         echo $row['email'];
                         echo "</td><td>";
                         echo $row['distric'];
+                        echo "</td><td>";
+                        echo $row['commit'];
                         echo "</td></tr>";
 
                  }

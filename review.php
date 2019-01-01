@@ -9,7 +9,118 @@
     header('Location:login.php');
   }
  ?>
-<?php  
+
+<html lang="en">
+  <head>
+      <title></title>
+        <link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="home.css" type="text/css">
+       <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <style>
+            body{
+              background: #0f2439;
+              margin-right: 200px;
+              margin-left: 200px;
+            }
+            
+            .head{
+              padding-top: 20px;
+              background-color:#0066ff;
+            }
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                margin-top: 70px;
+                font-size: 20px;
+            }
+
+            td, th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+
+            tr:nth-child(even) {
+                background-color: #000033;
+            }
+            img{
+              width:450px;
+            }
+            .column {
+                float: left;
+                width: 50%;
+                padding: 10px;
+               
+            }
+            .row{
+                
+            }
+            .container{
+                margin-bottom: 50px;
+                margin-left: 50px;
+            }
+            h1{
+              padding-bottom: 15px;
+            }
+            .container-contact3-form-btn{
+              margin-bottom: 40px;
+              margin-top: 40px;
+            }
+            ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #0f0f3d;
+}
+.nev{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+        </style>
+  </head> 
+  <body style="color:white;">
+  <!-- nev bar -->
+      <div class="nev">
+        <ul>
+        <li><a href="login.php">Student Login</a></li>
+        <li><a href="home.php">Student Register</a></li>
+        <li><a href="admin_login.php">Admin Login</a></li>
+        <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
+       </ul>
+      </div>
+
+      <?php  
           $course=$_SESSION['course'];  
           $name_with_initial=$_SESSION['name_with_initial'] ;
           $full_name=$_SESSION['full_name'];
@@ -179,115 +290,6 @@
 
            
 ?>
-<html lang="en">
-  <head>
-      <title></title>
-        <link href="//db.onlinewebfonts.com/c/a4e256ed67403c6ad5d43937ed48a77b?family=Core+Sans+N+W01+35+Light" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="home.css" type="text/css">
-       <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-       <meta name="viewport" content="width=device-width, initial-scale=1">
-       <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-        <style>
-            body{
-              background: #0f2439;
-              margin-right: 200px;
-              margin-left: 200px;
-            }
-            
-            .head{
-              padding-top: 20px;
-              background-color:#0066ff;
-            }
-            table {
-                font-family: arial, sans-serif;
-                border-collapse: collapse;
-                width: 100%;
-                margin-top: 70px;
-                font-size: 20px;
-            }
-
-            td, th {
-                border: 1px solid #dddddd;
-                text-align: left;
-                padding: 8px;
-            }
-
-            tr:nth-child(even) {
-                background-color: #000033;
-            }
-            img{
-              width:450px;
-            }
-            .column {
-                float: left;
-                width: 50%;
-                padding: 10px;
-               
-            }
-            .row{
-                
-            }
-            .container{
-                margin-bottom: 50px;
-                margin-left: 50px;
-            }
-            h1{
-              padding-bottom: 15px;
-            }
-            .container-contact3-form-btn{
-              margin-bottom: 40px;
-              margin-top: 40px;
-            }
-            ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover:not(.active) {
-  background-color: #111;
-}
-
-.active {
-  background-color: #0f0f3d;
-}
-.nev{
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
-        </style>
-  </head> 
-  <body style="color:white;">
-  <!-- nev bar -->
-      <div class="nev">
-        <ul>
-        <li><a href="login.php">Student Login</a></li>
-        <li><a href="home.php">Student Register</a></li>
-        <li><a href="admin_login.php">Admin Login</a></li>
-        <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
-       </ul>
-      </div>
 
         <form method="post">
             <div class="container-contact3-form-btn">

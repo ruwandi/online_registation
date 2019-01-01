@@ -104,6 +104,7 @@
         </div>
       </nav>
     <div class="container">
+      
         <?php            
              $query="select * from ped";
              $qurey_run=mysqli_query($con,$query) or die('error getting');
