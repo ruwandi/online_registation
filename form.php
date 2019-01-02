@@ -17,74 +17,50 @@
        
           $name_with_initial=$_POST['name_with_initial'];
           $_SESSION['name_with_initial']=$name_with_initial; 
-
           $full_name=$_POST['full_name'];
           $_SESSION['full_name']=$full_name;
-
           $email=$_POST['email'];
           $_SESSION['email']=$email;
-
           $adress=$_POST['adress'];
           $_SESSION['adress']=$adress;
-
           $nic_no=$_POST['nic_no'];
           $_SESSION['nic_no']=$nic_no;
-
-
           $distric=$_POST['distric'];
           $_SESSION['distric']=$distric;
-
           $mobile=$_POST['mobile'];
           $_SESSION['mobile']=$mobile;
-
           $gender=$_POST['gender'];
           $_SESSION['gender']=$gender;
-
           $index_no=$_POST['index_no'];
           $_SESSION['index_no']=$index_no;
-
           $zscore=$_POST['zscore'];
           $_SESSION['zscore']=$zscore;
-
           $genaral_test_marks=$_POST['genaral_test_marks'];
           $_SESSION['genaral_test_marks']=$genaral_test_marks;
-
           $sub1=$_POST['sub1'];
           $_SESSION['sub1']=$sub1;
-
           $grade1=$_POST['grade1'];
           $_SESSION['grade1']=$grade1;
-
           $sub2=$_POST['sub2'];
           $_SESSION['sub2']=$sub2;
-
           $grade2=$_POST['grade2'];
           $_SESSION['grade2']=$grade2;
-
           $sub3=$_POST['sub3'];
           $_SESSION['sub3']=$sub3;
-
           $grade3=$_POST['grade3'];
           $_SESSION['grade3']=$grade3;
-
           $OL_maths_grade=$_POST['OL_maths_grade'];
           $_SESSION['OL_maths_grade']=$OL_maths_grade;
-
           $OL_maths_examination_year=$_POST['OL_maths_examination_year'];
           $_SESSION['OL_maths_examination_year']=$OL_maths_examination_year;
-
           $OL_maths_index_no=$_POST['OL_maths_index_no'];
           $_SESSION['OL_maths_index_no']=$OL_maths_index_no;
-
           $OL_english_grade=$_POST['OL_english_grade'];
           $_SESSION['OL_english_grade']=$OL_english_grade;
-
           $OL_englishexamination_year=$_POST['OL_englishexamination_year'];
           $_SESSION['OL_englishexamination_year']=$OL_englishexamination_year;
-
           $OL_english_index_no=$_POST['OL_english_index_no'];
           $_SESSION['OL_english_index_no']=$OL_english_index_no;
-
           $textarea=$_POST['textarea'];
           $_SESSION['textarea']=$textarea;
           
@@ -94,36 +70,30 @@
            $_SESSION['tmp_name1']=$tmp_name1;
            $location1="uploads/";
            $_SESSION['location1']=$location1;
-
            $name2=$_FILES['filename2']['name'];
            $_SESSION['filename2']=$name2;
            $tmp_name2=$_FILES['filename2']['tmp_name'];
            $_SESSION['tmp_name2']=$tmp_name2;
            $location2="uploads/";
            $_SESSION['location2']=$location2;
-
            $name3=$_FILES['filename3']['name'];
            $_SESSION['filename3']=$name3;
            $tmp_name3=$_FILES['filename3']['tmp_name'];
            $_SESSION['tmp_name3']=$tmp_name3;
            $location3="uploads/";
            $_SESSION['location3']=$location3;
-
            $name4=$_FILES['filename4']['name'];
            $_SESSION['filename4']=$name4;
            $tmp_name4=$_FILES['filename4']['tmp_name'];
            $_SESSION['tmp_name4']=$tmp_name4;
            $location4="uploads/";
            $_SESSION['location4']=$location4;
-
            $name5=$_FILES['filename5']['name'];
            $_SESSION['filename5']=$name5;
            $tmp_name5=$_FILES['filename5']['tmp_name'];
            $_SESSION['tmp_name5']=$tmp_name5;
            $location5="uploads/"; 
            $_SESSION['location5']=$location5;
-
-
            
            $name6=$_FILES['filename6']['name'];
            $_SESSION['filename6']=$name6;
@@ -131,16 +101,13 @@
            $_SESSION['tmp_name6']=$tmp_name6;
            $location6="uploads/";
            $_SESSION['location6']=$location6;
-
            $name7=$_FILES['filename7']['name'];
            $_SESSION['filename7']=$name7;
            $tmp_name7=$_FILES['filename7']['tmp_name'];
            $_SESSION['tmp_name7']=$tmp_name7;
            $location7="uploads/";
            $_SESSION['location7']=$location7;
-
            //multiple file upload
-
           /*for($i = 0;$i<count($name6);$i++){
             $name6=$_FILES['filename6']['name'][$i];
             $_SESSION['filename6']=$name6;
@@ -150,8 +117,6 @@
               $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
             }
           }*/
-
-
             $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
             $upload_file2=move_uploaded_file($tmp_name2, $location2.$name2);
             $upload_file3=move_uploaded_file($tmp_name3, $location3.$name3);
@@ -172,11 +137,9 @@
                 else{
                            echo '<script type ="text/javascript"> alert("Error!") </script>';
                         }
-
           
                  
           } 
-
            
                 
 ?> 
@@ -192,7 +155,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <style>
-
             
               th{
                 padding-right: 20px;
@@ -207,33 +169,26 @@
               }
               label{
                 font-size: large;
-
               }
               a {
                   text-decoration: none;
                   display: inline-block;
                   padding: 8px 16px;
-
               }
               select{
-
               }
-
               a:hover {
                   background-color: #ddd;
                   color: black;
               }
-
               .previous {
                   background-color: #f1f1f1;
                   color: black;
               }
-
               .next {
                   background-color: rgb(0, 0, 0);
                   color: white;
               }
-
               .round {
                   border-radius: 50%;
               }
@@ -312,25 +267,21 @@
               left: 0;
               width: 0;
               height: 2px;
-
               -webkit-transition: all 0.4s;
               -o-transition: all 0.4s;
               -moz-transition: all 0.4s;
               transition: all 0.4s;
-
               background: #fff;
             }
             .container-contact3-form-btn {
               padding-top: 23px;
             }
-
             .contact3-form-btn {
               font-family: Poppins-Medium;
               font-size: 16px;
               color: #555555;
               line-height: 1.2;
               text-transform: uppercase;
-
               display: -webkit-box;
               display: -webkit-flex;
               display: -moz-box;
@@ -349,13 +300,11 @@
               background: -o-linear-gradient(-135deg, #56ab2f, #a8e063);
               background: -moz-linear-gradient(-135deg, #56ab2f, #a8e063);
               background: linear-gradient(-135deg, #56ab2f, #a8e063);
-
               -webkit-transition: all 0.4s;
               -o-transition: all 0.4s;
               -moz-transition: all 0.4s;
               transition: all 0.4s;
             }
-
             .contact3-form-btn::before {
               content: "";
               display: block;                                                              
@@ -367,11 +316,9 @@ ul {
   overflow: hidden;
   background-color: #333;
 }
-
 li {
   float: left;
 }
-
 li a {
   display: block;
   color: white;
@@ -379,11 +326,9 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
 }
-
 li a:hover:not(.active) {
   background-color: #111;
 }
-
 .active {
   background-color: #0f0f3d;
 }
@@ -637,7 +582,7 @@ li a:hover:not(.active) {
        </div>
 
        <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="upload" name="filename7" accept="application/pdf,image/*" multiple="multiple"/>
+          <input type="file" class="custom-file-input" id="upload" name="filename7" accept="application/pdf,image/*"/>
           
           <label class="custom-file-label" for="customFile">If any certificate </label>
        </div>   

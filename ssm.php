@@ -122,14 +122,16 @@
                         echo "</td><td>";
                         echo $row['distric'];
                         echo "</td></tr>";
-                        
 
                  }
                 echo "</table>";
-                
-             
-                
         ?>
+        <br><br>
+         <form method="post" id="usrform">
+              <div class="container-contact3-form-btn">
+              <button  name="reject" class="btn btn-primary">Schedule</button>
+              </div>
+            </form>
     </div>
           
   </body>

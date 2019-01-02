@@ -65,7 +65,7 @@ li a:hover:not(.active) {
 			    <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
 			    <input type="password" placeholder="Password" name="password" autocomplete="new-password" required />
 			    <input type="submit" value="Log In" name="login" class="btn btn-block btn-primary" />
-			    <input type="submit" value="Register" name="register" class="btn btn-block btn-primary" onclick="location.href='admin_register.php';" />
+			    
 		    </form>
 
 		    <?php 
