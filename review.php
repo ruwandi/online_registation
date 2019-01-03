@@ -17,7 +17,8 @@
           $adress=$_SESSION['adress'];
           $nic_no=$_SESSION['nic_no'];
           $distric=$_SESSION['distric'];
-          $mobile=$_SESSION['mobile'];
+          $home=$_SESSION['mobile1'];
+          $mobile=$_SESSION['mobile2'];
           $gender=$_SESSION['gender'];
           $index_no=$_SESSION['index_no'];
           $zscore=$_SESSION['zscore'];
@@ -60,10 +61,6 @@
           $tmp_name6=$_SESSION['tmp_name6'];
           $location6=$_SESSION['location6'];
 
-          $name7=$_SESSION['filename7'];
-          $tmp_name7=$_SESSION['tmp_name7'];
-          $location7=$_SESSION['location7'];
-
           $textarea=$_SESSION['textarea'];
           
           
@@ -85,6 +82,8 @@
                         echo $nic_no;
                         echo "</td></tr><tr><td>District</td><td>";
                         echo $distric;
+                        echo "</td></tr><tr><td>Home No</td><td>";
+                        echo $home;
                         echo "</td></tr><tr><td>Mobile No</td><td>";
                         echo $mobile;
                         echo "</td></tr><tr><td>Gender</td><td>";
@@ -153,8 +152,6 @@
                         echo "<img src='uploads/".$name5."'>";
                         echo "</td></tr><tr><td>If any affidavit </td><td>";
                         echo "<img src='uploads/".$name6."'>";
-                        echo "</td></tr><tr><td>If any certificate</td><td>";
-                        echo "<img src='uploads/".$name7."'>";
                         echo "</td></tr>";
                         echo "</table>";
                         }
@@ -294,6 +291,7 @@ li a:hover:not(.active) {
             <div class="container-contact3-form-btn">
                 <button  name="recorrect" class="btn btn-primary">Edit Information</button>
                 <button  name="submit" class="btn btn-primary" onclick="location.href='login.php';">Submit</button>    
+                <!-- <button  name="submit" class="btn btn-primary" onclick="location.href='login.php';">Create PDF</button>  -->   
           </div>  
         <br><br>
         </form>   

@@ -217,8 +217,7 @@
                   $name6=$row['name6'];
                   $_SESSION['name6']=$name6;
 
-                  $name7=$row['name7'];
-                  $_SESSION['name7']=$name7;
+            
 
                   
                         echo "<tr><th>ID</th><th>";
@@ -246,6 +245,8 @@
                         echo $row['nic_no'];
                         echo "</td></tr><tr><td>District</td><td>";
                         echo $row['distric'];
+                        echo "</td></tr><tr><td>Home No</td><td>";
+                        echo $row['home'];
                         echo "</td></tr><tr><td>Mobile No</td><td>";
                         echo $row['mobile'];
                         echo "</td></tr><tr><td>Gender</td><td>";
@@ -405,21 +406,7 @@
             
          </tr>
 
-         <tr>
-            <td>If any certificate</td>
-            <td><button onclick="myFunction7()" class="btn btn-block btn-primary" >Click</button>
-                  <script>
-                  function myFunction7() {
-                      window.open("file7.php");
-                  }
-                  </script>
-            </td>
-            <td>
-               <label class="radio-inline"><input type="radio" name="ok7" >   OK</label>
-               <label class="radio-inline"><input type="radio" name="ok7">    NOT OK</label>
-            </td>
-            
-         </tr>
+       
          </table>
 
           <br><br>
@@ -448,27 +435,53 @@
                             $name_with_initial=$_SESSION['name_with_initial'];
                             $email=$_SESSION['emali'];
                             
+
+                            //ssm table
                             if($course == 'B.Sc(Special) Degree in Sport Sciences & Management'){
-                            $query1= "insert into ssm (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                            $query_run1 = mysqli_query($con,$query1);
+                              $query="select * from ssm where s_id='$id'";
+                              $query_run=mysqli_query($con,$query);
+                                  if(mysqli_num_rows($query_run)>0){
+                                    echo '<script type ="text/javascript"> alert(" already select that student try another ") </script>';
+                                  }
+                              else{
+                                 $query1= "insert into ssm (s_id,fullname,mobile,email,distric) values ('$id','$full_name','$mobile','$email','$distric')";
+                                $query_run1 = mysqli_query($con,$query1);
                                 if ($query_run1) { echo '<script type ="text/javascript"> alert("Success!") </script>'; }
                                 else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
-                          }
-                          
+                                }
+                            }
+                           
+                          //ped table
                           if($course == 'B.Sc(Special) Degree in Phyaical Education (PED)'){
-                           $query2= "insert into ped (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                           $query_run2 = mysqli_query($con,$query2);
-                                if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
-                                else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
-                          }
-                         
+                            $query="select * from ped where s_id='$id'";
+                            $query_run=mysqli_query($con,$query);
+                                  if(mysqli_num_rows($query_run)>0){
+                                    echo '<script type ="text/javascript"> alert(" already select that student try another ") </script>';
+                                  }
+                                  else{
+                                    $query2= "insert into ped (s_id,fullname,mobile,email,distric) values ('$id','$full_name','$mobile','$email','$distric')";
+                                    $query_run2 = mysqli_query($con,$query2);
+                                       if ($query_run2) {   echo '<script type ="text/javascript"> alert("Success!") </script>'; }
+                                      else{ echo '<script type ="text/javascript"> alert("Error!") </script>';}
+                                  }   
+                           }
+                           
+                         //smpe
                          if($course =='Both SSM & PED'){
-                         $query3= "insert into smpe (fullname,mobile,email,distric) values ('$full_name','$mobile','$email','$distric')";
-                         $query_run3 = mysqli_query($con,$query3);
-                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
-                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
-                        }
+                          $query="select * from smpe where s_id='$id'";
+                          $query_run=mysqli_query($con,$query);
+                                  if(mysqli_num_rows($query_run)>0){
+                                    echo '<script type ="text/javascript"> alert(" already select that student try another ") </script>';
+                                  }
+                                  else{
+                                     $query3= "insert into smpe (s_id,fullname,mobile,email,distric) values ('$id','$full_name','$mobile','$email','$distric')";
+                                    $query_run3 = mysqli_query($con,$query3);
+                                      if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
+                                      else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+                                  }
                        
+                          }
+                        
             }
 
             if (isset($_POST['reject'])) {
@@ -480,18 +493,17 @@
                             $name_with_initial=$_SESSION['name_with_initial'];
                             $email=$_SESSION['emali'];
                             $textarea=$_POST['textarea'];
-                           /* $Payment_voucher=$_POST['commit1'];
-                            $Bank_paying_receipt=$_POST['commit2'];
-                            $ALC=$_POST['commit3'];
-                            $OLC_M=$_POST['commit4'];
-                            $OLC_E=$_POST['commit5'];
-                            $If_any_affidavit=$_POST['commit6'];
-                            $If_any_certificate=$_POST['commit7'];*/
-
-                            $query3= "insert into reject_student(fullname,mobile,email,distric,commit) values ('$full_name','$mobile','$email','$distric','$textarea')";
-                         $query_run3 = mysqli_query($con,$query3);
-                               if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
-                               else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+                          $query="select * from reject_student where s_id='$id'";
+                          $query_run=mysqli_query($con,$query);
+                                  if(mysqli_num_rows($query_run)>0){
+                                    echo '<script type ="text/javascript"> alert(" already select that student try another ") </script>';
+                                  }
+                                  else{
+                                    $query3= "insert into reject_student(s_id,course,fullname,mobile,email,distric,commit) values ('$id','$course','$full_name','$mobile','$email','$distric','$textarea')";
+                                    $query_run3 = mysqli_query($con,$query3);
+                                      if ($query_run3) {  echo '<script type ="text/javascript"> alert("Success!") </script>';  }
+                                      else{ echo '<script type ="text/javascript"> alert("Error!") </script>'; }
+                                  }  
              }
            ?>
           

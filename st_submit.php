@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 $mail = new PHPMailer;
 $mail->isSMTP();
-$mail->SMTPDebug = 2;
+//$mail->SMTPDebug = 2;
 $mail->Host = 'smtp.gmail.com';
 $mail->Port = 587;
 $mail->SMTPSecure = 'tls';
@@ -28,7 +28,7 @@ $mail->msgHTML("hello!");
 if (!$mail->send()) {
     echo "Mailer Error: " . $mail->ErrorInfo;
 } else {
-    echo "Message sent!";
+    echo "Message sent! check your email";
 }
 function save_mail($mail)
 {

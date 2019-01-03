@@ -51,7 +51,12 @@ li a:hover:not(.active) {
   position: relative;
   color: white;
   font-family: "Courier New", Courier, monospace;
-  font-size: 25px;
+  font-size: 15px;
+}
+.img{
+	margin-left: 550px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 .middle {
   position: absolute;
@@ -64,26 +69,50 @@ hr {
   margin: auto;
   width: 40%;
 }
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #3333ff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
 
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 	    </style>
 	</head>
 	<body>
 		   <div class="nev">
-		   	<ul>
-			  <li><a href="login.php">Student Login</a></li>
-			  <li><a href="home.php">Student Register</a></li>
-			  <li><a href="admin_login.php">Admin Login</a></li>
+		   	<ul> 
 			  <li style="float:right"><a class="active" href="welcom.php">Log Out</a></li>
+			  <li style="float:right"><a class="active" href="admin_login.php">Admin Login</a></li>
 			</ul>
 		   </div>
+		   
 		   <div class="bgimg">
-		   		
-				<div class="middle">
-			    <h1>ONLINE REGISTRATION FOR APTITUDE TEST</h1>
+		   	<div class="img">
+		   		<img src="susl.png">
+		   </div>
+		   	<div class="middle">
+				<h2>FOR THE</h2>
+				<h2 >SABARAGAMUWA UNIVERSITY OF SRI LANKA (SUSL) </h2>
+				<h2> UNIVERSITY ADMISSIONS FOR THE ACADEMIC YEAR 2018/2019 </h2>
 			    <hr>
+			    <br>
+			    <button class="button " onclick="location.href='login.php';">Register Now</button>
 			  </div>
-			</div>
+		 </div>
 		    
 		  
 

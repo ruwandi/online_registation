@@ -27,8 +27,10 @@
           $_SESSION['nic_no']=$nic_no;
           $distric=$_POST['distric'];
           $_SESSION['distric']=$distric;
-          $mobile=$_POST['mobile'];
-          $_SESSION['mobile']=$mobile;
+          $home=$_POST['mobile1'];
+          $_SESSION['mobile1']=$home;
+          $mobile=$_POST['mobile2'];
+          $_SESSION['mobile2']=$mobile;
           $gender=$_POST['gender'];
           $_SESSION['gender']=$gender;
           $index_no=$_POST['index_no'];
@@ -101,35 +103,24 @@
            $_SESSION['tmp_name6']=$tmp_name6;
            $location6="uploads/";
            $_SESSION['location6']=$location6;
-           $name7=$_FILES['filename7']['name'];
-           $_SESSION['filename7']=$name7;
-           $tmp_name7=$_FILES['filename7']['tmp_name'];
-           $_SESSION['tmp_name7']=$tmp_name7;
-           $location7="uploads/";
-           $_SESSION['location7']=$location7;
-           //multiple file upload
-          /*for($i = 0;$i<count($name6);$i++){
-            $name6=$_FILES['filename6']['name'][$i];
-            $_SESSION['filename6']=$name6;
-            $tmp_name6=$_FILES['filename6']['tmp_name'][$i];
-            $_SESSION['tmp_name6']=$tmp_name6;
-            if($tmp_name6 != ""){
-              $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
-            }
-          }*/
+           
+         
             $upload_file1=move_uploaded_file($tmp_name1, $location1.$name1);
             $upload_file2=move_uploaded_file($tmp_name2, $location2.$name2);
             $upload_file3=move_uploaded_file($tmp_name3, $location3.$name3);
             $upload_file4=move_uploaded_file($tmp_name4, $location4.$name4);
             $upload_file5=move_uploaded_file($tmp_name5, $location5.$name5);
             $upload_file6=move_uploaded_file($tmp_name6, $location6.$name6);
-            $upload_file7=move_uploaded_file($tmp_name7, $location7.$name7);
             
-            $query="insert into students (courase,name_with_initial,full_name,email,address,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea,name1,name2,name3,name4,name5,name6,name7) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea','$name1','$name2','$name3','$name4','$name5','$name6','$name7')";
-            //$query="insert into students (course,name_with_initial,full_name,email,adress,nic_no,distric,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea')";
-            
-              
-              $query_run = mysqli_query($con,$query);
+
+            $q="select * from students where nic_no='$nic_no'";
+            $query_run=mysqli_query($con,$q);
+            if(mysqli_num_rows($query_run)>0){
+              echo '<script type ="text/javascript"> alert("User already use that NIC_no try another ") </script>';
+            }
+            else{
+              $query="insert into students (courase,name_with_initial,full_name,email,address,nic_no,distric,home,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea,name1,name2,name3,name4,name5,name6) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$home','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea','$name1','$name2','$name3','$name4','$name5','$name6')";
+            $query_run = mysqli_query($con,$query);
               if ($query_run) { 
                 echo '<script type ="text/javascript"> alert("Success!") </script>';
                 header('location:review.php');
@@ -138,6 +129,8 @@
                            echo '<script type ="text/javascript"> alert("Error!") </script>';
                         }
           
+            }
+            
                  
           } 
            
@@ -221,7 +214,7 @@
             background: -o-linear-gradient(45deg, #56ab2f, #a8e063);
             background: -moz-linear-gradient(45deg, #56ab2f, #a8e063);
             background: linear-gradient(45deg, #56ab2f, #a8e063);*/
-            background-color: #0f2439;
+            background-color:#c2c2d6;
             border-radius: 10px;
             overflow: hidden;
             padding: 72px 55px 65px 55px;
@@ -230,7 +223,7 @@
               display: block;
             font-family: Poppins-Bold;
             font-size: 39px;
-            color: #fff;
+            color: black;
             line-height: 1.2;
             text-align: center;
             text-transform: uppercase;
@@ -308,44 +301,41 @@
             .contact3-form-btn::before {
               content: "";
               display: block;                                                              
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-li {
-  float: left;
-}
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-li a:hover:not(.active) {
-  background-color: #111;
-}
-.active {
-  background-color: #0f0f3d;
-}
-.nev{
-  margin-top: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
-}
+            }
+            ul {
+              list-style-type: none;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+              background-color: #333;
+            }
+            li {
+              float: left;
+            }
+            li a {
+              display: block;
+              color: white;
+              text-align: center;
+              padding: 14px 16px;
+              text-decoration: none;
+            }
+            li a:hover:not(.active) {
+              background-color: #111;
+            }
+            .active {
+              background-color: #c2c2d6;
+            }
+            .nev{
+              margin-top: 20px;
+              margin-left: 20px;
+              margin-right: 20px;
+            }
      </style>
   </head>
-  <body style="color:white; background-color:#668cff;">
+  <body style="color:black; background-color:#668cff;">
     <!-- nav bar -->
     <div class="nev">
         <ul>
-        <li><a href="login.php">Student Login</a></li>
-        <li><a href="home.php">Student Register</a></li>
-        <li><a href="admin_login.php">Admin Login</a></li>
         <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
       </ul>
       </div>
@@ -361,9 +351,9 @@ li a:hover:not(.active) {
                 <div class="form-group">
                   <label for="course-apply">01.Course/s Apply:</label><br>
                     <select name="course" id="course" required>
-                              <option value=""></option>
-                              <option value="B.Sc(Special) Degree in Sport Sciences & Management">B.Sc (Special) Degree in Sport Sciences & Management (SSM)</option>
-                              <option value="B.Sc(Special) Degree in Phyaical Education (PED)">B.Sc (Special) Degree in Phyaical Education (PED)</option>
+                              <option value="">Course/s Apply</option>
+                              <option value="B.Sc(Special) Degree in Sport Sciences & Management">B.Sc. Honours in Sport Sciences and Management (SSM)</option>
+                              <option value="B.Sc(Special) Degree in Phyaical Education (PED)">B.Sc. Honours in Physical Education (PED)</option>
                               <option value="Both SSM & PED">Both SSM & PED</option>
                     </select>
                    
@@ -371,21 +361,21 @@ li a:hover:not(.active) {
                 <div class="form-group">
                   <div class="wrap-input3 validate-input">
                     <label for="name-with-initial">02.Name with initial [IN BLOCK LATTERS]:</label>
-                       <input type="text" name="name_with_initial" pattern="[A-Z].{1,50}"  class="form-control" placeholder="Name with initial [IN BLOCK LATTERS]" required>
+                       <input type="text" name="name_with_initial" pattern="[A-Z].{1,50}"  class="form-control" placeholder="M.P.GAMAGE" required>
                   </div>      
                 </div>
 
                 <div class="form-group">
                   <div class="wrap-input3 validate-input">
                     <label for="full-name">03.Full name of the Applicant [IN BLOCK LATTERS]:</label>
-                      <input type="text" name="full_name" class="form-control" pattern="[A-Z].{1,50}"  class="form-control" placeholder="Full Name  [IN BLOCK LATTERS]" required>
+                      <input type="text" name="full_name" class="form-control" pattern="[A-Z].{1,50}"  class="form-control" placeholder="MADHAWA PRASAD GAMAGE" required>
                   </div>     
                 </div> 
 
                 <div class="form-group">
                   <div class="wrap-input3 validate-input">
                     <label for="full-name">04.Email:</label>
-                      <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
+                      <input type="email" placeholder="gamage@gmail.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
                   </div>     
                 </div> 
 
@@ -394,27 +384,56 @@ li a:hover:not(.active) {
                <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="Address is required">
                     <label for="address">05.Permanent Address:</label>
-                      <input type="text" name="adress" class="form-control" id="usr" placeholder="Permanent Address"  required>
+                      <input type="text" name="adress" class="form-control" id="usr" placeholder="'Pawana',Higurakanda,Katuwana"  required>
                   </div>     
                 </div>
 
                 <div class="form-group">
                   <div class="wrap-input3 validate-input" data-validate="ID card is requireds">
                    <label for="nic-no">06.National Identity Card Number:</label>
-                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,20}" id="usr" placeholder="National Identity Card Number" required>
+                      <input type="text" name="nic_no" class="form-control" pattern="[1-9v].{1,12}" id="usr" placeholder="948070723v" required>
                   </div>      
                 </div>
           
                  <div class="form-group">
                    <div class="wrap-input3 validate-input" data-validate="Distric is requireds">
                     <label for="gender">07.District(Residence):</label><br>
-                     <input type="text" name="distric" class="form-control" id="usr" placeholder="District(Residence)" required>
+                       <select name="distric" id="distric" required>
+                              <option value="">Disrict</option>
+                              <option value="Ampara">Ampara</option>
+                              <option value="Anuradhapura">Anuradhapura</option>
+                              <option value="Badulla">Badulla</option>
+                              <option value="Batticaloa">Batticaloa</option>
+                              <option value="Colombo">Colombo</option>
+                              <option value="Galle">Galle</option>
+                              <option value="Gampaha">Gampaha</option>
+                              <option value="Hambantota">Hambantota</option>
+                              <option value="Jaffna">Jaffna</option>
+                              <option value="Kalutara">Kalutara</option>
+                              <option value="Kandy">Kandy</option>
+                              <option value="Kegalle">Kegalle</option>
+                              <option value="Kilinochchi">Kilinochchi</option>
+                              <option value="Kurunegala">Kurunegala</option>
+                              <option value="Mannar">Mannar</option>
+                              <option value="Matale">Matale</option>
+                              <option value="Matara">Matara</option>
+                              <option value="Moneragala">Moneragala</option>
+                              <option value="Mullaitivu">Mullaitivu</option>
+                              <option value="Nuwara Eliya">Nuwara Eliya</option>
+                              <option value="Polonnaruwa">Polonnaruwa</option>
+                              <option value="Puttalam">Puttalam</option>
+                              <option value="Ratnapura">Ratnapura</option>
+                              <option value="Trincomalee">Trincomalee</option>
+                              <option value="Vavuniya">Vavuniya</option>
+                       </select>
+                     <!-- <input type="text" name="distric" class="form-control" id="usr" placeholder="District(Residence)" required> -->
                   </div> 
                 </div>
             <div class="form-group">
               <div class="wrap-input3 validate-input" data-validate="Contact No is requireds">
                     <label for="contact">08.Contact Telephone No/s:</label><br>
-                     <input type="text" name="mobile" class="form-control" pattern="[0-9].{1,20}" title="Please enter valid No"  id="usr" placeholder="Contact Telephone No mobile" required>
+                     <input type="text" name="mobile1" class="form-control" pattern="[0-9].{1,20}" title="Please enter valid No"  id="usr" placeholder="Home:" required>
+                     <input type="text" name="mobile2" class="form-control" pattern="[0-9].{1,20}" title="Please enter valid No"  id="usr" placeholder="Mobile:" required>
                   
                   </div>   
             </div>
@@ -429,9 +448,9 @@ li a:hover:not(.active) {
                       <label for="result">10.Result of the G.C.E.(A/L) Examination:</label><br>
                       <table>
                         <tr>
-                          <th>Index No:<input type="text" name="index_no" class="form-control" pattern="[1-9].{1,12}" title="Please enter valid index" id="usr" required></th>
-                          <th>Z-Score :<input type="text" name="zscore" class="form-control" pattern="[0-9].{1,5}" title="Please enter valid Z-score" id="usr" required></th>
-                          <th>Genaral Test Marks:<input name="genaral_test_marks" type="text" class="form-control" pattern="[1-9].{1,1}" title="Please enter marks"  id="usr" required></th>      
+                          <th>Index No:<input type="text" name="index_no" class="form-control" pattern="[1-9].{1,10}" placeholder="4567890345" title="Please enter valid index" id="usr" required></th>
+                          <th>Z-Score :<input type="text" name="zscore" class="form-control" pattern="[0-9].{1,5}" placeholder="1.2342" title="Please enter valid Z-score" id="usr" required></th>
+                          <th>Genaral Test Marks:<input name="genaral_test_marks" type="text" class="form-control" placeholder="78" pattern="[1-9].{1,1}" title="Please enter marks"  id="usr" required></th>      
                         </tr>
                       </table>
                       <table>
@@ -442,7 +461,7 @@ li a:hover:not(.active) {
                         </tr>
                         <tr>
                           <td>1</td>
-                          <td><input type="text" name="sub1" class="form-control" pattern="[a-z ].{1,20}" title="Please enter subject name" id="usr" required></td>
+                          <td><input type="text" name="sub1" class="form-control" pattern="[a-zA-Z ].{1,20}" placeholder="Mathamatics" title="Please enter subject name" id="usr" required></td>
                           <td>
                             <select name="grade1" id="course" required>
                               <option value=""></option>
@@ -455,7 +474,7 @@ li a:hover:not(.active) {
                         </tr>
                         <tr>
                           <td>2</td>
-                          <td><input type="text" name="sub2" pattern="[a-z].{1,12}" title="Please enter subject name" class="form-control" id="usr" required></td>
+                          <td><input type="text" name="sub2" pattern="[a-zA-Z].{1,12}" placeholder="Physics" title="Please enter subject name" class="form-control" id="usr" required></td>
                           <td>
                             <select name="grade2" id="course" required>
                               <option value=""></option>
@@ -468,7 +487,7 @@ li a:hover:not(.active) {
                         </tr>
                         <tr>
                           <td>3</td>
-                          <td><input type="text" name="sub3" class="form-control" pattern="[a-z].{1,12}" title="Please enter subject name" id="usr" required></td>
+                          <td><input type="text" name="sub3" class="form-control" placeholder="Chemistry" pattern="[a-zA-Z].{1,12}" title="Please enter subject name" id="usr" required></td>
                           <td>
                             <select name="grade3" id="course" required>
                               <option value=""></option>
@@ -519,7 +538,7 @@ li a:hover:not(.active) {
                               <option>2018</option>
                             </select>
                           </td>  
-                            <td><input type="text" name="OL_maths_index_no" class="form-control" id="usr" required></td>
+                            <td><input type="text" name="OL_maths_index_no" pattern="[1-9].{1,10}" placeholder="4567890345" class="form-control" id="usr" required></td>
                         </tr><tr>
                           <td>2</td>
                           <td>English Language</td>
@@ -545,7 +564,7 @@ li a:hover:not(.active) {
                               <option>2018</option>
                             </select>
                             </td>  
-                            <td><input type="text" name="OL_english_index_no" class="form-control" id="usr" required></td>
+                            <td><input type="text" name="OL_english_index_no" pattern="[1-9].{1,10}" placeholder="4567890345" class="form-control" id="usr" required></td>
                         </tr>
                       </table>
                 </div> 
@@ -580,13 +599,6 @@ li a:hover:not(.active) {
           <input type="file" class="custom-file-input" id="customFile" name="filename6" accept="application/pdf,image/*" />
           <label class="custom-file-label" for="customFile">If any affidavit </label>
        </div>
-
-       <div class="custom-file mb-3">
-          <input type="file" class="custom-file-input" id="upload" name="filename7" accept="application/pdf,image/*"/>
-          
-          <label class="custom-file-label" for="customFile">If any certificate </label>
-       </div>   
-        
 
        <div class="form-group">
           <label for="comment"> Any Comment:</label>

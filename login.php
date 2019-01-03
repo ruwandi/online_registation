@@ -50,15 +50,13 @@ li a:hover:not(.active) {
 
 		 <div class="nev">
 		   	<ul>
-			  <li><a href="login.php">Student Login</a></li>
-			  <li><a href="home.php">Student Register</a></li>
-			  <li><a href="admin_login.php">Admin Login</a></li>
 			  <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
+			  <li style="float:right"><a class="active" href="welcom.php">Admin Login</a></li>
 			</ul>
 		   </div>
 		<div class="body-content">
 		    <div class="module">
-		    <h1>Student Login</h1>
+		    <h1> Login</h1>
 		    <form class="form" action="login.php" method="post" enctype="multipart/form-data" autocomplete="off">
 			    <div class="alert alert-error"></div>
 			    <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />

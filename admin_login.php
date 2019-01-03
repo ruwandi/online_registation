@@ -50,9 +50,7 @@ li a:hover:not(.active) {
 		<!-- nev bar -->
 		<div class="nev">
 		   	<ul>
-			  <li><a href="login.php">Student Login</a></li>
-			  <li><a href="home.php">Student Register</a></li>
-			  <li><a href="admin_login.php">Admin Login</a></li>
+			  
 			  <li style="float:right"><a class="active" href="logout.php">Log Out</a></li>
 			</ul>
 		   </div>
