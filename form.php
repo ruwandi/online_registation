@@ -119,7 +119,8 @@
               echo '<script type ="text/javascript"> alert("User already use that NIC_no try another ") </script>';
             }
             else{
-              $query="insert into students (courase,name_with_initial,full_name,email,address,nic_no,distric,home,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea,name1,name2,name3,name4,name5,name6) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$home','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea','$name1','$name2','$name3','$name4','$name5','$name6')";
+             $query="insert into students (courase,name_with_initial,full_name,email,address,nic_no,distric,home,mobile,gender,index_no,zscore,genaral_test_marks,sub1,grade1,sub2,grade2,sub3,grade3,OL_maths_grade,OL_maths_examination_year,OL_maths_index_no,OL_english_grade,OL_english_examination_year,OL_english_index_no,textarea,name1,name2,name3,name4,name5,name6) values ('$course','$name_with_initial','$full_name','$email','$adress','$nic_no','$distric','$home','$mobile','$gender','$index_no','$zscore','$genaral_test_marks','$sub1','$grade1','$sub2','$grade2','$sub3','$grade3','$OL_maths_grade','$OL_maths_examination_year','$OL_maths_index_no','$OL_english_grade','$OL_englishexamination_year','$OL_english_index_no','$textarea','$name1','$name2','$name3','$name4','$name5','$name6')";
+            //$query="insert into students (courase,name_with_initial) values ('$course','$name_with_initial')";
             $query_run = mysqli_query($con,$query);
               if ($query_run) { 
                 echo '<script type ="text/javascript"> alert("Success!") </script>';
@@ -323,12 +324,10 @@
               background-color: #111;
             }
             .active {
-              background-color: #c2c2d6;
+              
             }
             .nev{
-              margin-top: 20px;
-              margin-left: 20px;
-              margin-right: 20px;
+              
             }
      </style>
   </head>
