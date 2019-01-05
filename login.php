@@ -37,12 +37,11 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #0f0f3d;
+ /* background-color: #33334d;*/
 }
 .nev{
-	margin-top: 20px;
-	margin-left: 20px;
-	margin-right: 20px;
+	
+
 }
 	    </style>
 	</head>
